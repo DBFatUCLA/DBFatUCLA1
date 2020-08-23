@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'dart:async';
+
+import 'DBFAppBar.dart';
+import 'DBFTeamsPage.dart';
 
 void main() => runApp(DBFWebsite());
 
@@ -17,7 +21,10 @@ class DBFWebsite extends StatelessWidget
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity
       ),
-      home: DBFHomepage(title: website_title)
+      routes: {
+        '/': (context) => DBFHomepage(website_title),
+        '/teams': (context) => DBFTeamsPage(website_title)
+      }
     );
   }
 }
@@ -26,7 +33,7 @@ class DBFHomepage extends StatelessWidget
 {
   final String title;
 
-  DBFHomepage({Key key, this.title}) : super(key: key);
+  DBFHomepage(this.title, {Key key}) : super(key: key);
 
   @override
   Widget
@@ -35,78 +42,16 @@ class DBFHomepage extends StatelessWidget
     return Scaffold(
       appBar: DBFAppBar(appbar_title: title),
       body: DBFHomepageContent(),
-      drawer: DBFSidebar()
     );
   }
 }
 
-class DBFAppBar extends StatefulWidget implements PreferredSizeWidget
-{
-  final String appbar_title;
-  final Color text_color;
-
-  @override
-  final Size preferredSize;
-
-  DBFAppBar({Key key, this.appbar_title})
-      : preferredSize = Size.fromHeight(kToolbarHeight),
-        text_color = Colors.white,
-        super(key: key);
-
-  @override
-  _DBFAppBarState
-  createState() => _DBFAppBarState();
-}
-
-class _DBFAppBarState extends State<DBFAppBar>
-{
-  @override
-  AppBar
-  build(BuildContext context)
-  {
-    return AppBar(
-      leading: IconButton(
-        icon: Icon(Icons.airplanemode_active),
-        onPressed: () { Scaffold.of(context).openDrawer(); }
-      ),
-      title: FlatButton(
-        textColor: widget.text_color,
-        hoverColor: Colors.transparent,
-        onPressed:
-          () {
-            Navigator.popUntil(context, ModalRoute.withName('/'));
-            Scaffold.of(context)
-                .showSnackBar(SnackBar(content: Text('TODO: implement home.')));
-          },
-        child: Text(widget.appbar_title)
-      ),
-      actions: <Widget> [
-        FlatButton(
-          textColor: widget.text_color,
-          onPressed:
-            () { Navigator.popUntil(context, ModalRoute.withName('/')); },
-          child: Text('About')
-        ),
-        FlatButton(
-          textColor: widget.text_color,
-          onPressed:
-            () { Navigator.popUntil(context, ModalRoute.withName('/')); },
-          child: Text('Teams')
-      ),
-        FlatButton(
-          textColor: widget.text_color,
-          onPressed:
-            () { Navigator.popUntil(context, ModalRoute.withName('/')); },
-          child: Text('Leads')
-        )
-      ]
-    );
-  }
-}
 
 class DBFHomepageContent extends StatefulWidget
 {
+  final String path = './assets/images/';
   final List<String> _rotating_images;
+  final int _timer_period = 7;
 
   DBFHomepageContent()
       : _rotating_images = new List<String>()
@@ -124,7 +69,6 @@ class DBFHomepageContent extends StatefulWidget
 class _DBFHomepageContent extends State<DBFHomepageContent>
 {
   Timer _timer;
-  final int _timer_period = 7;
   int _image = 0;
 
   @override
@@ -132,7 +76,7 @@ class _DBFHomepageContent extends State<DBFHomepageContent>
   initState()
   {
     super.initState();
-    _timer = Timer.periodic(Duration(seconds: _timer_period), (timer) {
+    _timer = Timer.periodic(Duration(seconds: widget._timer_period), (timer) {
       setState(() {
         _image = (_image + 1) % widget._rotating_images.length;
       });
@@ -168,7 +112,8 @@ class _DBFHomepageContent extends State<DBFHomepageContent>
         ),
         Container(color: Color.fromRGBO(0, 0, 0, 0.5)),  // Darkness filter.
         Center(
-          child: const Text('Welcome to Design Build Fly @ UCLA!',
+          child: const Text(
+            'Come Fly with Design Build Fly @ UCLA!',
             textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 50.0,
@@ -183,48 +128,3 @@ class _DBFHomepageContent extends State<DBFHomepageContent>
   }
 }
 
-class DBFSidebar extends Drawer
-{
-  final String header = 'Meet the teams';
-
-  @override
-  Drawer
-  build(BuildContext context)
-  {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.symmetric(vertical: 1.0),
-        children: <Widget> [
-          // Used to add a vertical offset.
-          SizedBox(
-            height: 10.0
-          ),
-          ConstrainedBox(
-            constraints: BoxConstraints(
-              minHeight: 50.0
-            ),
-            child: Text(
-              header,
-              style: Theme.of(context).textTheme.headline4,
-              textAlign: TextAlign.center
-            )
-          ),
-          ListTile(
-            title: Text(
-              'Manufacturing',
-              style: Theme.of(context).textTheme.headline6
-            ),
-            onTap: () { Navigator.pop(context); }
-          ),
-          ListTile(
-            title: Text(
-              'Propulsions',
-              style: Theme.of(context).textTheme.headline6
-            ),
-            onTap: () { Navigator.pop(context); }
-          )
-        ]
-      )
-    );
-  }
-}
