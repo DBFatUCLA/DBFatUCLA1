@@ -25,15 +25,16 @@ class DBFTeamsPage extends StatelessWidget
 
 class DBFTeamsContent extends StatelessWidget
 {
+  static EdgeInsetsGeometry _padding = EdgeInsets.all(12.0);
   List<GridTile> _bios;
 
   static GridTile
   _make_bio_card(BuildContext context, String team, String description)
   {
     return GridTile(
-      child: GestureDetector(
-        child: Card(
-          child: Center(
+      child: Card(
+        child: Container(
+          child: FlatButton(
             child: Text(
               team,
               textAlign: TextAlign.center,
@@ -44,52 +45,53 @@ class DBFTeamsContent extends StatelessWidget
                 fontWeight: FontWeight.bold,
               ),
             ),
-          ),
-          color: Colors.indigo,
-        ),
-        onTap: ()
-        {
-          showDialog(
-            context: context,
-            builder: (BuildContext context)
+            onPressed: ()
             {
-              return FractionallySizedBox(
-                child: Card(
-                  child: Center(
-                    child: Column(
-                      children: <Widget> [
-                        SelectableText(
-                          team,
-                          toolbarOptions: ToolbarOptions(
-                              copy: true,
-                              paste: true
-                          ),
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 25,
-                            fontFamily: 'bold',
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SelectableText(
-                          description,
-                          toolbarOptions: ToolbarOptions(
-                              copy: true,
-                              paste: true
-                          ),
-                          textAlign: TextAlign.center,
+              showDialog(
+                context: context,
+                builder: (BuildContext context)
+                {
+                  return FractionallySizedBox(
+                    child: Card(
+                      child: Center(
+                        child: Column(
+                          children: <Widget> [
+                            SelectableText(
+                              team,
+                              toolbarOptions: ToolbarOptions(
+                                  copy: true,
+                                  paste: true
+                              ),
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 25,
+                                fontFamily: 'bold',
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SelectableText(
+                              description,
+                              toolbarOptions: ToolbarOptions(
+                                  copy: true,
+                                  paste: true
+                              ),
+                              textAlign: TextAlign.center,
+                            )
+                          ],
                         )
-                      ],
-                    )
-                  ),
-                ),
-                widthFactor: .7,
-                heightFactor: .7
+                      ),
+                    ),
+                    widthFactor: .7,
+                    heightFactor: .7
+                  );
+                }
               );
             }
-          );
-        }
-      )
+          ),
+        ),
+        color: Colors.indigo,
+        margin: _padding,
+      ),
     );
   }
 
@@ -134,7 +136,7 @@ class DBFTeamsContent extends StatelessWidget
               crossAxisCount: 3,
               children: _bios,
               childAspectRatio: aspect_ratio,
-              padding: EdgeInsets.all(8.0),
+              padding: _padding,
             )
           )
         ]

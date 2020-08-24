@@ -59,8 +59,8 @@ class DBFAboutPage extends StatelessWidget
         child: ListView(
           padding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
           children: <Widget> [
-            _compose_text('Design Build Fly', 'About blurb goes here'),
-            _compose_text('Get Involved!', 'Join the Slack at ...')
+            _compose_text('Design Build Fly', 'About blurb goes here...'),
+            _compose_text('Get Involved!', 'Join the Slack at ...'),
           ]
         )
       )
