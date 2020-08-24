@@ -33,7 +33,7 @@ class DBFAboutPage extends StatelessWidget
           ),
           Separator(
             color: color,
-            length: 18.0
+            length: 48.0
           ),
           SelectableText(
             description,
