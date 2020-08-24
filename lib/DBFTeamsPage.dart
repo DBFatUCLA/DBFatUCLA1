@@ -26,10 +26,13 @@ class DBFTeamsPage extends StatelessWidget
 class DBFTeamsContent extends StatelessWidget
 {
   static EdgeInsetsGeometry _padding = EdgeInsets.all(12.0);
-  List<GridTile> _bios;
+  List<String> _teams;
+  List<String> _descriptions;
+  List<Color> _colors;
 
   static GridTile
-  _make_bio_card(BuildContext context, String team, String description)
+  _make_bio_card(BuildContext context, String team, String description,
+      Color color)
   {
     return GridTile(
       child: Card(
@@ -59,8 +62,8 @@ class DBFTeamsContent extends StatelessWidget
                             SelectableText(
                               team,
                               toolbarOptions: ToolbarOptions(
-                                  copy: true,
-                                  paste: true
+                                copy: true,
+                                paste: true
                               ),
                               textAlign: TextAlign.center,
                               style: const TextStyle(
@@ -72,8 +75,8 @@ class DBFTeamsContent extends StatelessWidget
                             SelectableText(
                               description,
                               toolbarOptions: ToolbarOptions(
-                                  copy: true,
-                                  paste: true
+                                copy: true,
+                                paste: true
                               ),
                               textAlign: TextAlign.center,
                             )
@@ -89,59 +92,66 @@ class DBFTeamsContent extends StatelessWidget
             }
           ),
         ),
-        color: Colors.indigo,
+        color: color,
         margin: _padding,
       ),
     );
   }
 
-  DBFTeamsContent() : _bios = List<GridTile>();
+  DBFTeamsContent()
+    : _colors = [], _teams = [], _descriptions = []
+  {
+    _colors.add(Colors.deepPurpleAccent);
+    _colors.add(Colors.orange);
+    _colors.add(Colors.indigo);
+    _colors.add(Colors.blueGrey);
+    _colors.shuffle();
+
+    _teams.add('Propulsions');
+    _descriptions.add('haha plane goes vroooom and woosh');
+
+    _teams.add('Manufacturing');
+    _descriptions.add('Did someone say Monokote?');
+
+    _teams.add('CAD');
+    _descriptions.add('Spruce Caboose!');
+
+    _teams.add('Rowlet');
+    _descriptions.add('Don\'t do anything meaningful');
+  }
 
   @override Widget
   build(BuildContext context)
   {
-    _bios.add(_make_bio_card(context, 'Propulsions',
-                             'haha plane goes vroooom and woosh'));
-    _bios.add(_make_bio_card(context, 'Manufacturing',
-                             'Did someone say Monokote?'));
-    double aspect_ratio = 16/9;
+    List<GridTile> bios = [];
+    for (int idx = 0; idx < _teams.length; idx++)
+    {
+      bios.add(_make_bio_card(context, _teams[idx], _descriptions[idx],
+          _colors[idx]));
+    }
 
-    return Container(
-      child: Column(
-        children: [
-          SizedBox(
-            height: 80,
-            child: Card(
-              child: Center(
-                child: SelectableText(
-                  'Click on a Team to learn more about them!',
-                  toolbarOptions: ToolbarOptions(
-                    copy: true,
-                    paste: true
-                  ),
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontFamily: 'Cambria',
-                    fontWeight: FontWeight.bold,
-                  )
-                ),
-              ),
-              color: Colors.transparent
-            )
-          ),
-          Expanded(
-            child: GridView.count(
-              crossAxisCount: 3,
-              children: _bios,
-              childAspectRatio: aspect_ratio,
-              padding: _padding,
-            )
-          )
-        ]
-      ),
-      color: Colors.black
+    double aspect_ratio = 16/9;
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
+    return Stack(
+      children: <Widget> [
+        Image(
+          image: AssetImage('./assets/images/teamsbackground.jpg'),
+          fit: BoxFit.fill,
+          height: height,
+          width: width,
+        ),
+        Container(
+            color: Color.fromRGBO(0, 0, 0, 0.5)
+        ),
+        GridView.extent(
+          maxCrossAxisExtent: 500.0,
+          children: bios,
+          childAspectRatio: aspect_ratio,
+          padding: _padding,
+        )
+      ]
     );
   }
 }

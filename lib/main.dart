@@ -119,8 +119,8 @@ class _DBFHomepageContent extends State<DBFHomepageContent>
   Widget
   build(BuildContext context)
   {
-    var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Stack(
       children: <Widget> [
         AnimatedSwitcher(
@@ -133,7 +133,9 @@ class _DBFHomepageContent extends State<DBFHomepageContent>
             key: ValueKey<int>(_image)
           )
         ),
-        Container(color: Color.fromRGBO(0, 0, 0, 0.5)),  // Darkness filter.
+        Container(
+          color: Color.fromRGBO(0, 0, 0, 0.5)
+        ),  // Darkness filter.
         Center(
           child: const Text(
             'Welcome to Design Build Fly @ UCLA!',
