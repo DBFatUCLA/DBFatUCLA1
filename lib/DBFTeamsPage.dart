@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'DBFAppBar.dart';
@@ -6,15 +5,19 @@ import 'DBFAppBar.dart';
 class DBFTeamsPage extends StatelessWidget
 {
   final String _title;
+  final String _route;
 
-  DBFTeamsPage(this._title);
+  DBFTeamsPage({Key key, String title, String route})
+    : _title = title,
+      _route = route,
+      super(key: key);
 
   @override
   Widget
   build(BuildContext context)
   {
     return Scaffold(
-      appBar: DBFAppBar(appbar_title: _title),
+      appBar: DBFAppBar(title: _title, route: _route),
       body: DBFTeamsContent(),
     );
   }
@@ -55,8 +58,12 @@ class DBFTeamsContent extends StatelessWidget
                   child: Center(
                     child: Column(
                       children: <Widget> [
-                        Text(
+                        SelectableText(
                           team,
+                          toolbarOptions: ToolbarOptions(
+                              copy: true,
+                              paste: true
+                          ),
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontSize: 25,
@@ -64,8 +71,12 @@ class DBFTeamsContent extends StatelessWidget
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text(
+                        SelectableText(
                           description,
+                          toolbarOptions: ToolbarOptions(
+                              copy: true,
+                              paste: true
+                          ),
                           textAlign: TextAlign.center,
                         )
                       ],
@@ -84,8 +95,7 @@ class DBFTeamsContent extends StatelessWidget
 
   DBFTeamsContent() : _bios = List<GridTile>();
 
-  @override
-  Widget
+  @override Widget
   build(BuildContext context)
   {
     _bios.add(_make_bio_card(context, 'Propulsions',
@@ -94,33 +104,42 @@ class DBFTeamsContent extends StatelessWidget
                              'Did someone say Monokote?'));
     double aspect_ratio = 16/9;
 
-    return Column(
-      children: [
-        SizedBox(
-          height: 80,
-          child: Card(
-            child: Center(
-              child: Text(
-                'Click on a Team to learn more about them!',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 25,
-                  fontFamily: 'bold',
-                  fontWeight: FontWeight.bold,
-                )
-              )
-            ),
-            color: Colors.transparent
+    return Container(
+      child: Column(
+        children: [
+          SizedBox(
+            height: 80,
+            child: Card(
+              child: Center(
+                child: SelectableText(
+                  'Click on a Team to learn more about them!',
+                  toolbarOptions: ToolbarOptions(
+                    copy: true,
+                    paste: true
+                  ),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontFamily: 'Cambria',
+                    fontWeight: FontWeight.bold,
+                  )
+                ),
+              ),
+              color: Colors.transparent
+            )
+          ),
+          Expanded(
+            child: GridView.count(
+              crossAxisCount: 3,
+              children: _bios,
+              childAspectRatio: aspect_ratio,
+              padding: EdgeInsets.all(8.0),
+            )
           )
-        ),
-        Expanded(
-          child: GridView.count(
-            crossAxisCount: 3,
-            children: _bios,
-            childAspectRatio: aspect_ratio,
-          )
-        )
-      ]
+        ]
+      ),
+      color: Colors.black
     );
   }
 }

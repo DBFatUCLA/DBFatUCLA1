@@ -1,3 +1,4 @@
+import 'package:dbf_v10/DBFAboutPage.dart';
 import 'package:flutter/material.dart';
 
 import 'dart:async';
@@ -10,6 +11,9 @@ void main() => runApp(DBFWebsite());
 class DBFWebsite extends StatelessWidget
 {
   final website_title = 'DBF at UCLA';
+  static String home_route = '/';
+  static String teams_route = '/teams';
+  static String about_route = '/about';
 
   @override
   Widget
@@ -22,8 +26,18 @@ class DBFWebsite extends StatelessWidget
         visualDensity: VisualDensity.adaptivePlatformDensity
       ),
       routes: {
-        '/': (context) => DBFHomepage(website_title),
-        '/teams': (context) => DBFTeamsPage(website_title)
+        home_route: (context) => DBFHomepage(
+          title: website_title,
+          route: home_route
+        ),
+        teams_route: (context) => DBFTeamsPage(
+          title: website_title,
+          route: teams_route
+        ),
+        about_route: (context) => DBFAboutPage(
+          title: website_title,
+          route: about_route
+        )
       }
     );
   }
@@ -31,16 +45,20 @@ class DBFWebsite extends StatelessWidget
 
 class DBFHomepage extends StatelessWidget
 {
-  final String title;
+  final String _title;
+  final String _route;
 
-  DBFHomepage(this.title, {Key key}) : super(key: key);
+  DBFHomepage({Key key, String title, String route})
+    : _title = title,
+      _route = route,
+      super(key: key);
 
   @override
   Widget
   build(BuildContext context)
   {
     return Scaffold(
-      appBar: DBFAppBar(appbar_title: title),
+      appBar: DBFAppBar(title: _title, route: _route),
       body: DBFHomepageContent(),
     );
   }
@@ -49,16 +67,16 @@ class DBFHomepage extends StatelessWidget
 
 class DBFHomepageContent extends StatefulWidget
 {
-  final String path = './assets/images/';
+  static String _path = './assets/images';
+  static int _timer_period = 7;
   final List<String> _rotating_images;
-  final int _timer_period = 7;
 
   DBFHomepageContent()
       : _rotating_images = new List<String>()
   {
-    _rotating_images.add('./assets/images/rowlet.png');
-    _rotating_images.add('./assets/images/wooloo.png');
-    _rotating_images.add('./assets/images/sprucecaboose.png');
+    _rotating_images.add('${_path}/img0.jpg');
+    _rotating_images.add('${_path}/img1.png');
+    _rotating_images.add('${_path}/img2.jpg');
   }
 
   @override
@@ -76,11 +94,16 @@ class _DBFHomepageContent extends State<DBFHomepageContent>
   initState()
   {
     super.initState();
-    _timer = Timer.periodic(Duration(seconds: widget._timer_period), (timer) {
-      setState(() {
-        _image = (_image + 1) % widget._rotating_images.length;
-      });
-    });
+    _timer = Timer.periodic(Duration(
+      seconds: DBFHomepageContent._timer_period),
+      (timer)
+      {
+        setState(()
+        {
+          _image = (_image + 1) % widget._rotating_images.length;
+        });
+      }
+    );
   }
 
   @override
@@ -101,7 +124,7 @@ class _DBFHomepageContent extends State<DBFHomepageContent>
     return Stack(
       children: <Widget> [
         AnimatedSwitcher(
-          duration: const Duration(milliseconds: 500),
+          duration: const Duration(milliseconds: 750),
           child: Image(
             image: AssetImage(widget._rotating_images[_image]),
             fit: BoxFit.fill,
@@ -113,7 +136,7 @@ class _DBFHomepageContent extends State<DBFHomepageContent>
         Container(color: Color.fromRGBO(0, 0, 0, 0.5)),  // Darkness filter.
         Center(
           child: const Text(
-            'Come Fly with Design Build Fly @ UCLA!',
+            'Welcome to Design Build Fly @ UCLA!',
             textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 50.0,
