@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'DBFAppBar.dart';
+import 'safetext.dart';
+import 'separator.dart';
 
 class DBFTeamsPage extends StatelessWidget
 {
@@ -25,7 +27,7 @@ class DBFTeamsPage extends StatelessWidget
 
 class DBFTeamsContent extends StatelessWidget
 {
-  static EdgeInsetsGeometry _padding = EdgeInsets.all(12.0);
+  static const EdgeInsetsGeometry _padding = EdgeInsets.all(12.0);
   List<String> _teams;
   List<String> _descriptions;
   List<Color> _colors;
@@ -43,7 +45,7 @@ class DBFTeamsContent extends StatelessWidget
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 25,
+                fontSize: 30,
                 fontFamily: 'bold',
                 fontWeight: FontWeight.bold,
               ),
@@ -58,34 +60,22 @@ class DBFTeamsContent extends StatelessWidget
                     child: Card(
                       child: Center(
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget> [
-                            SelectableText(
+                            SafeText(
                               team,
-                              toolbarOptions: ToolbarOptions(
-                                copy: true,
-                                paste: true
-                              ),
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                fontSize: 25,
-                                fontFamily: 'bold',
-                                fontWeight: FontWeight.bold,
-                              ),
+                              fontSize: 30,
+                              fontFamily: SafeText.cambria,
+                              fontWeight: FontWeight.bold
                             ),
-                            SelectableText(
-                              description,
-                              toolbarOptions: ToolbarOptions(
-                                copy: true,
-                                paste: true
-                              ),
-                              textAlign: TextAlign.center,
-                            )
+                            Separator(color: Colors.black, length: 0.0),
+                            SafeText(description, fontFamily: SafeText.cambria)
                           ],
                         )
                       ),
                     ),
-                    widthFactor: .7,
-                    heightFactor: .7
+                    widthFactor: .8,
+                    heightFactor: .8
                   );
                 }
               );

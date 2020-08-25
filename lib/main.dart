@@ -11,9 +11,9 @@ void main() => runApp(DBFWebsite());
 class DBFWebsite extends StatelessWidget
 {
   final website_title = 'DBF at UCLA';
-  static String home_route = '/';
-  static String teams_route = '/teams';
-  static String about_route = '/about';
+  static const String home_route = '/';
+  static const String teams_route = '/teams';
+  static const String about_route = '/about';
 
   @override
   Widget
@@ -139,10 +139,8 @@ class _DBFHomepageContent extends State<DBFHomepageContent>
         Center(
           child: const Text(
             'Welcome to Design Build Fly @ UCLA!',
-            textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 50.0,
-              fontFamily: 'bold',
               fontWeight: FontWeight.bold,
               color: Colors.white,
             )

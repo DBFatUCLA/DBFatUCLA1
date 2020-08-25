@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'DBFAppBar.dart';
 import 'separator.dart';
+import 'safetext.dart';
 
 class DBFAboutPage extends StatelessWidget
 {
@@ -16,7 +17,7 @@ class DBFAboutPage extends StatelessWidget
       super(key: key);
 
   static Widget
-  _compose_text(String title, String description, {Color color: Colors.white})
+  _compose_text(String title, String description, {Color color: Colors.black})
   {
     return Container(
       padding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
@@ -35,14 +36,7 @@ class DBFAboutPage extends StatelessWidget
             color: color,
             length: 48.0
           ),
-          SelectableText(
-            description,
-            style: TextStyle(
-              fontSize: 18,
-              color: color,
-              fontFamily: 'Cambria'
-            )
-          )
+          SafeText(description, fontFamily: SafeText.cambria)
         ],
         crossAxisAlignment: CrossAxisAlignment.start,
       )
@@ -55,12 +49,13 @@ class DBFAboutPage extends StatelessWidget
     return Scaffold(
       appBar: DBFAppBar(title: _title, route: _route),
       body: Container(
-        color: Colors.black,
+        color: Colors.white,
         child: ListView(
           padding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
           children: <Widget> [
             _compose_text('Design Build Fly', 'About blurb goes here...'),
             _compose_text('Get Involved!', 'Join the Slack at ...'),
+            _compose_text('Let\'s look at the Text Widget', 'Sing with me a song of birthrights and love. \n The light scatters to the sky above. \n Dawn breaks through the gloom white as a bone. \n Lost in thoughts all alone.')
           ]
         )
       )
