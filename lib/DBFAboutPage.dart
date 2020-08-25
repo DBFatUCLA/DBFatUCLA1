@@ -55,7 +55,6 @@ class DBFAboutPage extends StatelessWidget
           children: <Widget> [
             _compose_text('Design Build Fly', 'About blurb goes here...'),
             _compose_text('Get Involved!', 'Join the Slack at ...'),
-            _compose_text('Let\'s look at the Text Widget', 'Sing with me a song of birthrights and love. \n The light scatters to the sky above. \n Dawn breaks through the gloom white as a bone. \n Lost in thoughts all alone.')
           ]
         )
       )
