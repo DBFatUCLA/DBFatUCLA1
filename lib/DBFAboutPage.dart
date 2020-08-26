@@ -17,7 +17,8 @@ class DBFAboutPage extends StatelessWidget
       super(key: key);
 
   static Widget
-  _compose_text(String title, String description, {Color color: Colors.black})
+  _compose_text(String title, String description, {Color color: Colors.black,
+      String fontFamily: SafeText.cambria})
   {
     return Container(
       padding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
@@ -36,7 +37,7 @@ class DBFAboutPage extends StatelessWidget
             color: color,
             length: 48.0
           ),
-          SafeText(description, fontFamily: SafeText.cambria)
+          SafeText(description, fontFamily: fontFamily)
         ],
         crossAxisAlignment: CrossAxisAlignment.start,
       )

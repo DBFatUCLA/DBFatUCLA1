@@ -65,11 +65,10 @@ class DBFTeamsContent extends StatelessWidget
                             SafeText(
                               team,
                               fontSize: 30,
-                              fontFamily: SafeText.cambria,
                               fontWeight: FontWeight.bold
                             ),
                             Separator(color: Colors.black, length: 0.0),
-                            SafeText(description, fontFamily: SafeText.cambria)
+                            SafeText(description)
                           ],
                         )
                       ),

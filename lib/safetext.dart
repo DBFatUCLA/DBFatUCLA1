@@ -16,12 +16,12 @@ class SafeText extends StatelessWidget
       double fontSize: SafeText._min_font_size,
       FontWeight fontWeight: FontWeight.normal,
       Color color: SafeText._default_color})
-      : _text = text,
-        _font = fontFamily,
-        _font_size = fontSize,
-        _font_weight = fontWeight,
-        _color = color,
-        super(key: key)
+    : _text = text,
+      _font = fontFamily,
+      _font_size = fontSize,
+      _font_weight = fontWeight,
+      _color = color,
+      super(key: key)
   {
     assert(fontSize >= SafeText._min_font_size);
   }
@@ -31,7 +31,6 @@ class SafeText extends StatelessWidget
   {
     return SelectableText(
       _text,
-      textWidthBasis: TextWidthBasis.longestLine,
       toolbarOptions: ToolbarOptions(
         copy: true,
         paste: true
