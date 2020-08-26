@@ -5,7 +5,8 @@ class DBFAppBar extends StatefulWidget implements PreferredSizeWidget
   final String _title;
   static Color _text_color = Colors.white;
   static Color _midnight_blue = Color.fromRGBO(25, 25, 112, 1.0);
-  static Color _splash_color = Color.fromRGBO(255, 255, 255, 0.25);
+  static Color _highlight = Color.fromRGBO(255, 255, 255, 0.25);
+  static Color _splash_color = Color.fromRGBO(255, 255, 255, 0.5);
   static String _font = 'Montserrat';
   final String _route;
 
@@ -35,6 +36,10 @@ class _DBFAppBarState extends State<DBFAppBar>
       alignment: Alignment.center,
       child: FlatButton(
         splashColor: DBFAppBar._splash_color,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.zero
+        ),
+        hoverColor: DBFAppBar._highlight,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -78,8 +83,11 @@ class _DBFAppBarState extends State<DBFAppBar>
             Container(
               child: FlatButton(
                 textColor: DBFAppBar._text_color,
-                hoverColor: Colors.transparent,
+                hoverColor: DBFAppBar._highlight,
                 splashColor: DBFAppBar._splash_color,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.zero
+                ),
                 onPressed: ()
                 {
                   Navigator.popUntil(context, ModalRoute.withName('/'));
