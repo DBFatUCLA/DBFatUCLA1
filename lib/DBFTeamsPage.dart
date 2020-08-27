@@ -1,36 +1,36 @@
 import 'package:flutter/material.dart';
 
-import 'DBFAppBar.dart';
 import 'safetext.dart';
 import 'separator.dart';
 
 class DBFTeamsPage extends StatelessWidget
 {
-  final String _title;
-  final String _route;
-
-  DBFTeamsPage({Key key, String title, String route})
-    : _title = title,
-      _route = route,
-      super(key: key);
-
-  @override
-  Widget
-  build(BuildContext context)
-  {
-    return Scaffold(
-      appBar: DBFAppBar(title: _title, route: _route),
-      body: DBFTeamsContent(),
-    );
-  }
-}
-
-class DBFTeamsContent extends StatelessWidget
-{
   static const EdgeInsetsGeometry _padding = EdgeInsets.all(12.0);
   List<String> _teams;
   List<String> _descriptions;
   List<Color> _colors;
+
+  DBFTeamsPage({Key key})
+    : _colors = [], _teams = [], _descriptions = [], super(key: key)
+  {
+    _colors.add(Colors.deepPurpleAccent);
+    _colors.add(Colors.orange);
+    _colors.add(Colors.indigo);
+    _colors.add(Colors.blueGrey);
+    _colors.shuffle();
+
+    _teams.add('Propulsions');
+    _descriptions.add('haha plane goes vroooom and woosh');
+
+    _teams.add('Manufacturing');
+    _descriptions.add('Did someone say Monokote?');
+
+    _teams.add('CAD');
+    _descriptions.add('Spruce Caboose!');
+
+    _teams.add('Rowlet');
+    _descriptions.add('Don\'t do anything meaningful');
+  }
 
   static GridTile
   _make_bio_card(BuildContext context, String team, String description,
@@ -87,28 +87,6 @@ class DBFTeamsContent extends StatelessWidget
     );
   }
 
-  DBFTeamsContent()
-    : _colors = [], _teams = [], _descriptions = []
-  {
-    _colors.add(Colors.deepPurpleAccent);
-    _colors.add(Colors.orange);
-    _colors.add(Colors.indigo);
-    _colors.add(Colors.blueGrey);
-    _colors.shuffle();
-
-    _teams.add('Propulsions');
-    _descriptions.add('haha plane goes vroooom and woosh');
-
-    _teams.add('Manufacturing');
-    _descriptions.add('Did someone say Monokote?');
-
-    _teams.add('CAD');
-    _descriptions.add('Spruce Caboose!');
-
-    _teams.add('Rowlet');
-    _descriptions.add('Don\'t do anything meaningful');
-  }
-
   @override Widget
   build(BuildContext context)
   {
@@ -132,7 +110,7 @@ class DBFTeamsContent extends StatelessWidget
           width: width,
         ),
         Container(
-            color: Color.fromRGBO(0, 0, 0, 0.5)
+          color: Color.fromRGBO(0, 0, 0, 0.5)
         ),
         GridView.extent(
           maxCrossAxisExtent: 500.0,
