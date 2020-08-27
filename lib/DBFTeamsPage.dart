@@ -17,6 +17,7 @@ class DBFTeamsPage extends StatelessWidget
     _colors.add(Colors.orange);
     _colors.add(Colors.indigo);
     _colors.add(Colors.blueGrey);
+    _colors.add(Colors.teal);
     _colors.shuffle();
 
     _teams.add('Propulsions');
@@ -28,8 +29,11 @@ class DBFTeamsPage extends StatelessWidget
     _teams.add('CAD');
     _descriptions.add('Spruce Caboose!');
 
-    _teams.add('Rowlet');
-    _descriptions.add('Don\'t do anything meaningful');
+    _teams.add('Aerodynamics');
+    _descriptions.add('Spruce Bruce!');
+
+    _teams.add('Structures');
+    _descriptions.add('Spruce Zeus... what could have been...');
   }
 
   static GridTile
