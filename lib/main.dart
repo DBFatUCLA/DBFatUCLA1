@@ -1,4 +1,5 @@
 import 'package:dbf_v10/DBFAboutPage.dart';
+import 'package:dbf_v10/DBFDrawer.dart';
 import 'package:flutter/material.dart';
 
 import 'DBFAppBar.dart';
@@ -34,6 +35,7 @@ class DBFWebsiteContent extends StatefulWidget
     (() => DBFTeamsPage())
   ];
   static const List<String> page_names = ['DBF @ UCLA', 'About', 'Teams'];
+  static const List<String> page_names_drawer = ['Home', 'About', 'Teams'];
 
   @override State<StatefulWidget>
   createState() => _DBFWebsiteContent();
@@ -53,7 +55,7 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent>
   void
   _change_page(int idx)
   {
-    if (_current_context_idx != idx)
+    if (_current_context_idx != idx && idx < DBFWebsiteContent.pages.length)
     {
       setState(()
       {
@@ -135,7 +137,7 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent>
       ),
       body: AnimatedSwitcher(
         child: _content,
-        duration: const Duration(milliseconds: 1000),
+        duration: const Duration(milliseconds: 750),
         switchInCurve: Curves.fastOutSlowIn,
         switchOutCurve: Curves.fastOutSlowIn.flipped,
         transitionBuilder: transition_function
@@ -159,11 +161,10 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent>
         switchOutCurve: Curves.fastOutSlowIn.flipped,
         transitionBuilder: transition_function
       ),
-      drawer: Drawer(
-        child: ListView(
-
-        ),
-      ),
+      drawer: DBFDrawer(
+        page_names: DBFWebsiteContent.page_names_drawer,
+        change_page: _change_page,
+      )
     );
   }
 }
