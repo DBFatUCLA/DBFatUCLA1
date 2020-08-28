@@ -73,6 +73,7 @@ class _DBFHomepage extends State<DBFHomepage>
         Center(
           child: const Text(
             'Welcome to Design Build Fly @ UCLA!',
+            textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 50.0,
               fontWeight: FontWeight.bold,

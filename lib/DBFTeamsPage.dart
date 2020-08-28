@@ -72,7 +72,10 @@ class DBFTeamsPage extends StatelessWidget
                               fontWeight: FontWeight.bold
                             ),
                             Separator(color: Colors.black, length: 0.0),
-                            SafeText(description)
+                            Container(
+                              child: SafeText(description),
+                              margin: EdgeInsets.fromLTRB(12, 0, 12, 12),
+                            )
                           ],
                         )
                       ),
