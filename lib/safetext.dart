@@ -7,16 +7,19 @@ class SafeText extends StatelessWidget
   static const Color _default_color = Colors.black;
 
   final String _text;
+  final TextAlign _text_align;
   final String _font;
   final double _font_size;
   final FontWeight _font_weight;
   final Color _color;
 
-  SafeText(text, {Key key, String fontFamily: SafeText.cambria,
+  SafeText(text, {Key key, TextAlign textAlign: TextAlign.center,
+      String fontFamily: SafeText.cambria,
       double fontSize: SafeText._min_font_size,
       FontWeight fontWeight: FontWeight.normal,
       Color color: SafeText._default_color})
     : _text = text,
+      _text_align = textAlign,
       _font = fontFamily,
       _font_size = fontSize,
       _font_weight = fontWeight,
@@ -31,6 +34,7 @@ class SafeText extends StatelessWidget
   {
     return SelectableText(
       _text,
+      textAlign: _text_align,
       toolbarOptions: ToolbarOptions(
         copy: true,
         paste: true
