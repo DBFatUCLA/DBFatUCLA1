@@ -30,7 +30,11 @@ class DBFAboutPage extends StatelessWidget
             color: color,
             length: 48.0
           ),
-          SafeText(description, fontFamily: fontFamily)
+          SafeText(
+            description,
+            fontFamily: fontFamily,
+            textAlign: TextAlign.start
+          )
         ],
         crossAxisAlignment: CrossAxisAlignment.start,
       )
