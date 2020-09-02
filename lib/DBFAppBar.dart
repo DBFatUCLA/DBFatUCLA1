@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 
 class DBFAppBar extends StatelessWidget implements PreferredSizeWidget
 {
-  static Color _text_color = Colors.white;
-  static Color _midnight_blue = Color.fromRGBO(25, 25, 112, 1.0);
-  static Color _highlight = Color.fromRGBO(255, 255, 255, 0.25);
-  static Color _splash_color = Color.fromRGBO(255, 255, 255, 0.5);
-  static String _font = 'Montserrat';
+  static const Color _text_color = Colors.white;
+  static const Color _midnight_blue = Color.fromRGBO(25, 25, 112, 1.0);
+  static const Color _highlight = Color.fromRGBO(255, 255, 255, 0.25);
+  static const Color _splash_color = Color.fromRGBO(255, 255, 255, 0.5);
+  static const String _font = 'Montserrat';
+  static const String _title_font = 'Questrial';
 
   @override final Size preferredSize;
 
@@ -16,7 +17,7 @@ class DBFAppBar extends StatelessWidget implements PreferredSizeWidget
 
   DBFAppBar({Key key, List<String> page_names,
       Function(int) change_page, bool is_mobile: false})
-    : preferredSize = Size.fromHeight(kToolbarHeight),
+    : preferredSize = const Size(double.infinity, 75.0),
       _page_names = page_names,
       _change_page = change_page,
       _is_mobile = is_mobile,
@@ -42,24 +43,27 @@ class DBFAppBar extends StatelessWidget implements PreferredSizeWidget
           borderRadius: BorderRadius.zero
         ),
         hoverColor: DBFAppBar._highlight,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget> [
-            Text(
-              _page_names[page_idx],
-              style: TextStyle(
-                fontSize: 20,
-                fontFamily: DBFAppBar._font,
-                color: _text_color
+        child: Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget> [
+              Text(
+                _page_names[page_idx],
+                style: TextStyle(
+                  fontSize: 25,
+                  fontFamily: DBFAppBar._font,
+                  color: _text_color
+                ),
               ),
-            ),
-            Container(
-              height: 2.0,
-              width: 15.0,
-              color: _text_color
-            )
-          ]
+              Container(
+                height: 2.0,
+                width: 18.0,
+                color: _text_color
+              )
+            ]
+          ),
+          padding: EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
         ),
         onPressed: ()
         {
@@ -88,13 +92,24 @@ class DBFAppBar extends StatelessWidget implements PreferredSizeWidget
             {
               _change_page(0);
             },
-            child: Text(
-              _page_names[0],
-              style: TextStyle(
-                fontFamily: DBFAppBar._font,
-                fontSize: 25,
-                fontWeight: FontWeight.bold
-              ),
+            child: Row(
+              children: <Widget> [
+                Container(
+                  child: Image(
+                    image: AssetImage('./assets/images/logo.png'),
+                    fit: BoxFit.fill
+                  ),
+                  padding: EdgeInsets.fromLTRB(0.0, 8.0, 8.0, 8.0)
+                ),
+                Text(
+                  _page_names[0],
+                  style: TextStyle(
+                    fontFamily: DBFAppBar._title_font,
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold
+                  ),
+                )
+              ]
             )
           ),
           height: preferredSize.height
@@ -110,6 +125,7 @@ class DBFAppBar extends StatelessWidget implements PreferredSizeWidget
     return AppBar(
       automaticallyImplyLeading: false,
       backgroundColor: DBFAppBar._midnight_blue,
+      toolbarHeight: preferredSize.height,
       title: Container(
         child: Row(
           children: appbar_row,
@@ -132,7 +148,7 @@ class DBFAppBar extends StatelessWidget implements PreferredSizeWidget
             hoverColor: DBFAppBar._highlight,
             splashColor: DBFAppBar._splash_color,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.zero
+              borderRadius: BorderRadius.zero
             ),
             onPressed: ()
             {
@@ -141,9 +157,9 @@ class DBFAppBar extends StatelessWidget implements PreferredSizeWidget
             child: Text(
               _page_names[0],
               style: TextStyle(
-                  fontFamily: DBFAppBar._font,
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold
+                fontFamily: DBFAppBar._title_font,
+                fontSize: 35,
+                fontWeight: FontWeight.bold
               ),
             )
           ),
@@ -155,6 +171,7 @@ class DBFAppBar extends StatelessWidget implements PreferredSizeWidget
     return AppBar(
       automaticallyImplyLeading: false,
       backgroundColor: DBFAppBar._midnight_blue,
+      toolbarHeight: preferredSize.height,
       leading: IconButton(
         icon: Icon(Icons.dehaze),
         onPressed: () { Scaffold.of(context).openDrawer(); },

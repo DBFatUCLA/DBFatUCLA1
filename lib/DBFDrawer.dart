@@ -46,8 +46,10 @@ class DBFDrawer extends Drawer
               child: AspectRatio(
                 aspectRatio: 1.0,
                 child: Container(
-                  color: Colors.yellow,
-                  child: Text('Imagine a logo here...')
+                  child: const Image(
+                    image: AssetImage('./assets/images/logo.png'),
+                    fit: BoxFit.fill
+                  )
                 )
               ),
               padding: EdgeInsets.all(16.0)

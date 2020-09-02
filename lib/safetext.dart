@@ -35,10 +35,6 @@ class SafeText extends StatelessWidget
     return SelectableText(
       _text,
       textAlign: _text_align,
-      toolbarOptions: ToolbarOptions(
-        copy: true,
-        paste: true
-      ),
       style: TextStyle(
         fontFamily: _font,
         fontSize: _font_size,
