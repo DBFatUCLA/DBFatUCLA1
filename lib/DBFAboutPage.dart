@@ -7,7 +7,7 @@ import 'safetext.dart';
 
 class DBFAboutPage extends StatelessWidget
 {
-  DBFAboutPage({Key key}) : super(key: key);
+  const DBFAboutPage({Key key}) : super(key: key);
 
   static Widget
   _compose_text(String title, String description, {Color color: Colors.black,

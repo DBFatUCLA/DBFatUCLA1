@@ -6,9 +6,9 @@ class DBFHomepage extends StatefulWidget
   static const String _path = './assets/images';
   static const int _timer_period = 5;
   static const List<AssetImage> _rotating_images = [
-    const AssetImage('${_path}/img0.jpg'),
-    const AssetImage('${_path}/img1.png'),
-    const AssetImage('${_path}/img2.jpg')
+    AssetImage('${_path}/img0.jpg'),
+    AssetImage('${_path}/img1.png'),
+    AssetImage('${_path}/img2.jpg')
   ];
 
   @override _DBFHomepage

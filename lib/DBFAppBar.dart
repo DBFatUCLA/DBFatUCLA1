@@ -95,7 +95,7 @@ class DBFAppBar extends StatelessWidget implements PreferredSizeWidget
             child: Row(
               children: <Widget> [
                 Container(
-                  child: Image(
+                  child: const Image(
                     image: AssetImage('./assets/images/logo.png'),
                     fit: BoxFit.fill
                   ),

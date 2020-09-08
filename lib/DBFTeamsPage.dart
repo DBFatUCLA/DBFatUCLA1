@@ -7,12 +7,25 @@ import 'separator.dart';
 class DBFTeamsPage extends StatelessWidget
 {
   static const EdgeInsetsGeometry _padding = EdgeInsets.all(12.0);
-  List<String> _teams;
-  List<String> _descriptions;
+  static const List<String> _teams = [
+    'Propulsions',
+    'Manufacturing',
+    'CAD',
+    'Aerodynamics',
+    'Structures'
+  ];
+  static const List<String> _descriptions = [
+    'haha plane goes vroooom and woosh',
+    'Did someone say Monokote?',
+    'Spruce Caboose!',
+    'Spruce Bruce!',
+    'Spruce Zeus... what could have been...'
+  ];
   List<Color> _colors;
 
   DBFTeamsPage({Key key})
-    : _colors = [], _teams = [], _descriptions = [], super(key: key)
+    : _colors = [], 
+      super(key: key)
   {
     _colors.add(Colors.deepPurpleAccent);
     _colors.add(Colors.orange);
@@ -20,21 +33,6 @@ class DBFTeamsPage extends StatelessWidget
     _colors.add(Colors.blueGrey);
     _colors.add(Colors.teal);
     _colors.shuffle();
-
-    _teams.add('Propulsions');
-    _descriptions.add('haha plane goes vroooom and woosh');
-
-    _teams.add('Manufacturing');
-    _descriptions.add('Did someone say Monokote?');
-
-    _teams.add('CAD');
-    _descriptions.add('Spruce Caboose!');
-
-    _teams.add('Aerodynamics');
-    _descriptions.add('Spruce Bruce!');
-
-    _teams.add('Structures');
-    _descriptions.add('Spruce Zeus... what could have been...');
   }
 
   static GridTile
@@ -105,14 +103,14 @@ class DBFTeamsPage extends StatelessWidget
           _colors[idx]));
     }
 
-    double aspect_ratio = 16/9;
+    const double aspect_ratio = 16/9;
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
     return Stack(
       children: <Widget> [
         Image(
-          image: AssetImage('./assets/images/teamsbackground.jpg'),
+          image: const AssetImage('./assets/images/teamsbackground.jpg'),
           fit: BoxFit.fill,
           height: height,
           width: width,
