@@ -45,11 +45,9 @@ class DBFDrawer extends Drawer
             Container(
               child: AspectRatio(
                 aspectRatio: 1.0,
-                child: Container(
-                  child: const Image(
-                    image: AssetImage('./assets/images/logo.png'),
-                    fit: BoxFit.fill
-                  )
+                child: const Image(
+                  image: AssetImage('./assets/images/logo.png'),
+                  fit: BoxFit.fill
                 )
               ),
               padding: EdgeInsets.all(16.0)
