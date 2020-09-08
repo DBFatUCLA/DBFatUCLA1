@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'safetext.dart';
 import 'separator.dart';
@@ -119,11 +120,13 @@ class DBFTeamsPage extends StatelessWidget
         Container(
           color: Color.fromRGBO(0, 0, 0, 0.5)
         ),
-        GridView.extent(
-          maxCrossAxisExtent: 500.0,
-          children: bios,
-          childAspectRatio: aspect_ratio,
-          padding: _padding,
+        CupertinoScrollbar(
+          child: GridView.extent(
+            maxCrossAxisExtent: 500.0,
+            children: bios,
+            childAspectRatio: aspect_ratio,
+            padding: _padding,
+          )
         )
       ]
     );

@@ -3,17 +3,13 @@ import 'dart:async';
 
 class DBFHomepage extends StatefulWidget
 {
-  static String _path = './assets/images';
-  static int _timer_period = 5;
-  final List<String> _rotating_images;
-
-  DBFHomepage()
-    : _rotating_images = new List<String>()
-  {
-    _rotating_images.add('${_path}/img0.jpg');
-    _rotating_images.add('${_path}/img1.png');
-    _rotating_images.add('${_path}/img2.jpg');
-  }
+  static const String _path = './assets/images';
+  static const int _timer_period = 5;
+  static const List<AssetImage> _rotating_images = [
+    const AssetImage('${_path}/img0.jpg'),
+    const AssetImage('${_path}/img1.png'),
+    const AssetImage('${_path}/img2.jpg')
+  ];
 
   @override _DBFHomepage
   createState() => _DBFHomepage();
@@ -36,7 +32,7 @@ class _DBFHomepage extends State<DBFHomepage>
       {
         setState(()
         {
-          _image = (_image + 1) % widget._rotating_images.length;
+          _image = (_image + 1) % DBFHomepage._rotating_images.length;
         });
       }
     );
@@ -60,7 +56,7 @@ class _DBFHomepage extends State<DBFHomepage>
         AnimatedSwitcher(
           duration: const Duration(milliseconds: 750),
           child: Image(
-            image: AssetImage(widget._rotating_images[_image]),
+            image: DBFHomepage._rotating_images[_image],
             fit: BoxFit.fill,
             width: width,
             height: height,
