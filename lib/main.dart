@@ -67,36 +67,13 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent>
   }
 
   Widget Function(Widget child, Animation<double> animation) get
-  transition_function
+  _transition_function
   {
     if (_last_content_idx < _current_context_idx)
     {
       return (Widget child, Animation<double> animation)
       {
-        if (animation.status != AnimationStatus.dismissed)
-        {
-          return SlideTransition(
-            child: child,
-            position: Tween<Offset>(
-              begin: Offset(-1, 0),
-              end: Offset.zero
-            ).animate(animation)
-          );
-        }
-        return SlideTransition(
-          child: child,
-          position: Tween<Offset>(
-            begin: Offset(1, 0),
-            end: Offset.zero
-          ).animate(animation)
-        );
-      };
-    }
-    else
-    {
-      return (Widget child, Animation<double> animation)
-      {
-        if (animation.status != AnimationStatus.dismissed)
+        if (animation.status == AnimationStatus.dismissed)
         {
           return SlideTransition(
             child: child,
@@ -106,10 +83,53 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent>
             ).animate(animation)
           );
         }
-        return SlideTransition(
+        else if (animation.status == AnimationStatus.completed)
+        {
+          return SlideTransition(
             child: child,
+            position: Tween<Offset>(
+              begin: Offset(-1, 0),
+              end: Offset.zero
+            ).animate(animation)
+          );
+        }
+        return SlideTransition( 
+          child: child,
           position: Tween<Offset>(
-            begin: Offset(-1, 0),
+            begin: Offset.zero, 
+            end: Offset.zero
+          ).animate(animation)
+        );
+      };
+    }
+    else
+    {
+      return (Widget child, Animation<double> animation)
+      {
+        if (animation.status == AnimationStatus.dismissed)
+        {
+          return SlideTransition(
+            child: child,
+            position: Tween<Offset>(
+              begin: Offset(-1, 0),
+              end: Offset.zero
+            ).animate(animation)
+          );
+        }
+        else if (animation.status == AnimationStatus.completed)
+        {
+          return SlideTransition(
+            child: child,
+            position: Tween<Offset>(
+              begin: Offset(1, 0),
+              end: Offset.zero
+            ).animate(animation)
+          );
+        }
+        return SlideTransition( 
+          child: child,
+          position: Tween<Offset>(
+            begin: Offset.zero, 
             end: Offset.zero
           ).animate(animation)
         );
@@ -122,8 +142,7 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent>
   {
     if (MediaQuery.of(context).size.shortestSide > 600)
       return _build_tablet(context);
-    else
-      return _build_mobile(context);
+    return _build_mobile(context);
   }
 
   Widget
@@ -140,7 +159,7 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent>
         duration: const Duration(milliseconds: 750),
         switchInCurve: Curves.fastOutSlowIn,
         switchOutCurve: Curves.fastOutSlowIn.flipped,
-        transitionBuilder: transition_function
+        transitionBuilder: _transition_function
       )
     );
   }
@@ -156,10 +175,10 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent>
       ),
       body: AnimatedSwitcher(
         child: _content,
-        duration: const Duration(milliseconds: 1000),
+        duration: const Duration(milliseconds: 750),
         switchInCurve: Curves.fastOutSlowIn,
         switchOutCurve: Curves.fastOutSlowIn.flipped,
-        transitionBuilder: transition_function
+        transitionBuilder: _transition_function
       ),
       drawer: DBFDrawer(
         page_names: DBFWebsiteContent.page_names_drawer,

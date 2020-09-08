@@ -21,17 +21,20 @@ class DBFTeamsPage extends StatelessWidget
     'Spruce Bruce!',
     'Spruce Zeus... what could have been...'
   ];
-  List<Color> _colors;
+  List<Color> _colors = [
+    Colors.deepPurpleAccent,
+    Colors.orange,
+    Colors.cyan,
+    Colors.blueGrey,
+    Colors.teal,
+    Colors.amber,
+    Colors.blueAccent,
+    Colors.lightBlueAccent
+  ];
 
   DBFTeamsPage({Key key})
-    : _colors = [], 
-      super(key: key)
+    : super(key: key)
   {
-    _colors.add(Colors.deepPurpleAccent);
-    _colors.add(Colors.orange);
-    _colors.add(Colors.indigo);
-    _colors.add(Colors.blueGrey);
-    _colors.add(Colors.teal);
     _colors.shuffle();
   }
 
