@@ -2,8 +2,8 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'separator.dart';
 import 'safetext.dart';
+import 'ButtonWithDropdown.dart';
 
 class DBFAboutPage extends StatelessWidget
 {
@@ -13,30 +13,24 @@ class DBFAboutPage extends StatelessWidget
   _compose_text(String title, String description, {Color color: Colors.black,
       String fontFamily: SafeText.cambria})
   {
+    TextStyle title_style = TextStyle(
+      color: color,
+      fontFamily: fontFamily,
+      fontSize: 36, 
+      fontWeight: FontWeight.bold
+    );
+    TextStyle description_style = TextStyle(
+      color: color,
+      fontFamily: fontFamily,
+      fontSize: 18, 
+    );
     return Container(
-      padding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
-      child: Column(
-        children: <Widget> [
-          SelectableText(
-            title,
-            style: TextStyle(
-              color: color,
-              fontSize: 36,
-              fontFamily: 'Cambria',
-              fontWeight: FontWeight.bold,
-            )
-          ),
-          Separator(
-            color: color,
-            length: 48.0
-          ),
-          SafeText(
-            description,
-            fontFamily: fontFamily,
-            textAlign: TextAlign.start
-          )
-        ],
-        crossAxisAlignment: CrossAxisAlignment.start,
+      padding: EdgeInsets.fromLTRB(0, 15.0, 15.0, 15.0),
+      child: ButtonWithDropdown(
+        name: title, 
+        description: description,
+        name_style: title_style,
+        description_style: description_style,       
       )
     );
   }
@@ -51,7 +45,7 @@ class DBFAboutPage extends StatelessWidget
         children: <Widget> [
           _compose_text('Design Build Fly', 'About blurb goes here...'),
           _compose_text('Get Involved!', 'Join the Slack at ...'),
-        ]
+        ],
       )
     );
   }
