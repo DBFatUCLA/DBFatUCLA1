@@ -1,15 +1,12 @@
-/** 
- * Widget that exists in 2 states. 
- * 1. Just a button with the name
- * 2. A button, under which is a blurb with name and description.
- * 
- * Pressing the button switches the state.
- */
-
 import 'package:flutter/material.dart';
 
 import 'Separator.dart';
 
+/// Class that exists in 2 states.
+/// 1. Button with a expand icon and the title
+/// 2. Button with a contract icon and title, underneath is a blurb containing
+///     the description of the title.
+/// Click the button to swap between states.
 class ButtonWithDropdown extends StatefulWidget
 {
     final String name;
@@ -35,30 +32,28 @@ class _ButtonWithDropdown extends State<ButtonWithDropdown>
     build(BuildContext context)
     {
         FlatButton button;
+        List<Widget> button_display;
+
         if (_retracted)
         {
-            button = FlatButton(
-                child: Row(
-                    children: [
-                        Icon(Icons.expand_more),
-                        Text(widget.name, style: widget.name_style),
-                    ]
-                ),
-                onPressed: () => setState(() { _retracted = false; })
-            );
+            button_display = [
+                Icon(Icons.expand_more),
+                Text(widget.name, style: widget.name_style)
+            ];
         }
         else
         {
-            button = FlatButton(
-                child: Row(
-                    children: [
-                        Icon(Icons.expand_less),
-                        Text(widget.name, style: widget.name_style),
-                    ]
-                ),
-                onPressed: () => setState(() { _retracted = true; })
-            );
+            button_display = [
+                Icon(Icons.expand_more),
+                Text(widget.name, style: widget.name_style)
+            ];
         }
+        button = FlatButton(
+            child: Row(
+                children: button_display
+            ),
+            onPressed: () => setState(() { _retracted = !_retracted; })
+        );
 
         return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +67,7 @@ class _ButtonWithDropdown extends State<ButtonWithDropdown>
                     )
                 ),
                 if (!_retracted) Container(
-                    padding: EdgeInsets.fromLTRB(35.0, 0, 0, 0),
+                    padding: EdgeInsets.fromLTRB(35.0, 0, 35.0, 0),
                     child: SelectableText(
                         widget.description, 
                         style: widget.description_style,
