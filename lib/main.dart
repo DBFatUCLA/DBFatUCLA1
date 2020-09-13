@@ -55,7 +55,7 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent>
             (() => DBFHomepage()),
             (() => DBFAboutPage()),
             (() => DBFTeamsPage((idx) => _change_page(idx + 3))),
-            (() => TeamsInfo(Propulsions(), () => _change_page(2)))
+            (() => TeamsInfo(const Propulsions(), () => _change_page(2)))
         ];
     }
 

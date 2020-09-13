@@ -1,10 +1,6 @@
-import 'package:dbf_v10/TeamsInfo.dart';
-import 'package:dbf_v10/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'safetext.dart';
-import 'separator.dart';
 
 /// Page with cards team names. Pressing on them brings up a description via
 ///     dialog.
@@ -19,7 +15,7 @@ class DBFTeamsPage extends StatelessWidget
         'Aerodynamics',
         'Structures'
     ];
-    List<Color> _colors = [
+    static final List<Color> _colors = [
         Colors.deepPurpleAccent,
         Colors.orange,
         Colors.cyan,

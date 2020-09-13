@@ -8,14 +8,16 @@ const String PATH = './assets/images';
 
 class Propulsions extends StatelessWidget
 {
+    const Propulsions();
+
     @override Widget 
     build(BuildContext context)
     {
         return SafeArea(
             child: LayoutBuilder(
-                builder: (context, constraints)
+                builder: (context, _)
                 {
-                    if (constraints.maxWidth > 600)
+                    if (MediaQuery.of(context).size.width > 600)
                         return _build_tablet(context);
                     return _build_mobile(context);
                 },
@@ -37,7 +39,7 @@ class Propulsions extends StatelessWidget
                     description
                 ],
             ),
-            margin: EdgeInsets.fromLTRB(4.0, 0, 4.0, 0),
+            margin: EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
         );
         
         return Container( 
