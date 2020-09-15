@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -17,14 +19,75 @@ class Propulsions extends StatelessWidget
     @override Widget 
     build(BuildContext context)
     {
+        Widget image1 = const Image(  
+            image: AssetImage('${path}/img0.jpg'),
+            fit: BoxFit.fill
+        );
+        Widget title1 = SafeText(
+            'Propulsions',
+            fontSize: 36.0,
+            fontWeight: FontWeight.bold,
+        );
+        Widget description1 = SafeText(
+            'This is the format which I have code to duplicate.\n'
+        );
+
+        Widget image2 = const Image(
+            image: AssetImage('${path}/img1.png'),
+            fit: BoxFit.fill
+        );
+        Widget title2 = SafeText( 
+            'Reversed so Image is on left.',
+            fontSize: 36.0,
+            fontWeight: FontWeight.bold,
+        );
+        Widget description2 = SafeText(
+'''
+Here is a really loooooooooooong line that has lots of content. So much content. You wouldn't believe the amount of content...
+'''
+        );
+
+        Widget image3 = const Image(  
+            image: AssetImage('${path}/img2.jpg'),
+            fit: BoxFit.fill
+        );
+        Widget title3 = SafeText(
+            'Mobile?',
+            fontSize: 36.0,
+            fontWeight: FontWeight.bold,
+        );
+        Widget description3 = SafeText(
+            'Still working on it, need some ideas...'
+        );
+        
+        bool build_tablet = MediaQuery.of(context).size.width > 600;
+        final List<Widget> l = [
+            if (build_tablet) ...[
+                _compose_two_columns(title1, description1, image1, 2, 1, true, 
+                        true),
+                _compose_two_columns(title2, description2, image2, 1, 2, false,
+                        false),
+                _compose_two_columns(title3, description3, image3, 1, 1, true,
+                        true),
+            ],
+            if (!build_tablet) ...[
+                _compose_column(title1, description1, image1, true),
+                _compose_column(title2, description2, image2, false),
+                _compose_column(title3, description3, image3, true),
+            ]
+        ];
         return SafeArea(
-            child: LayoutBuilder(
-                builder: (context, _)
-                {
-                    if (MediaQuery.of(context).size.width > 600)
-                        return _build_tablet(context);
-                    return _build_mobile(context);
-                },
+            child: CupertinoScrollbar(
+                child: ListView.separated(
+                    itemCount: l.length,
+                    itemBuilder: (_, idx) => l[idx],
+                    separatorBuilder: (_, __)
+                        => Divider(
+                            color: Color.fromRGBO(0, 0, 0, 0.3),
+                            height: 0,
+                            thickness: 1,
+                        ),      
+                )
             )
         );
     }
@@ -91,131 +154,6 @@ class Propulsions extends StatelessWidget
                         margin: EdgeInsets.all(8.0)
                     )
                 ],
-            )
-        );
-    }
-
-    Widget 
-    _build_tablet(BuildContext context)
-    {
-        Widget image1 = const Image(  
-            image: AssetImage('${path}/img0.jpg'),
-            fit: BoxFit.fill
-        );
-        Widget title1 = SafeText(
-            'Propulsions',
-            fontSize: 36.0,
-            fontWeight: FontWeight.bold,
-        );
-        Widget description1 = SafeText(
-            'This is the format which I have code to duplicate.\n'
-        );
-
-        Widget image2 = const Image(
-            image: AssetImage('${path}/img1.png'),
-            fit: BoxFit.fill
-        );
-        Widget title2 = SafeText( 
-            'Reversed so Image is on left.',
-            fontSize: 36.0,
-            fontWeight: FontWeight.bold,
-        );
-        Widget description2 = SafeText(
-'''
-Here is a really loooooooooooong line that has lots of content. So much content. You wouldn't believe the amount of content...
-'''
-        );
-
-        Widget image3 = const Image(  
-            image: AssetImage('${path}/img2.jpg'),
-            fit: BoxFit.fill
-        );
-        Widget title3 = SafeText(
-            'Mobile?',
-            fontSize: 36.0,
-            fontWeight: FontWeight.bold,
-        );
-        Widget description3 = SafeText(
-            'Still working on it, need some ideas...'
-        );
-
-        List<Widget> l = [
-            _compose_two_columns(title1, description1, image1, 2, 1, true, 
-                    true),
-            _compose_two_columns(title2, description2, image2, 1, 2, false,
-                    false),
-            _compose_two_columns(title3, description3, image3, 1, 1, true,
-                    true),
-        ];
-        return CupertinoScrollbar(
-            child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: l.length,
-                itemBuilder: (_, idx) => l[idx],
-            )
-        );
-    }
-
-    Widget 
-    _build_mobile(BuildContext context)
-    {
-        Widget image1 = const Image(  
-            image: AssetImage('${path}/img0.jpg'),
-            fit: BoxFit.fitWidth
-        );
-        Widget title1 = SafeText(
-            'Propulsions',
-            fontSize: 36.0,
-            fontWeight: FontWeight.bold,
-        );
-        Widget description1 = SafeText(
-            'This is the format which I have code to duplicate.\n'
-        );
-
-        Widget image2 = const Image(
-            image: AssetImage('${path}/img1.png'),
-            fit: BoxFit.fitWidth
-        );
-        Widget title2 = SafeText( 
-            'Reversed so Image is on left.',
-            fontSize: 36.0,
-            fontWeight: FontWeight.bold,
-        );
-        Widget description2 = SafeText(
-'''
-Here is a really loooooooooooong line that has lots of content. So much content. You wouldn't believe the amount of content...
-'''
-        );
-
-        Widget image3 = const Image(  
-            image: AssetImage('${path}/img2.jpg'),
-            fit: BoxFit.fitWidth
-        );
-        Widget title3 = SafeText(
-            'Mobile?',
-            fontSize: 36.0,
-            fontWeight: FontWeight.bold,
-        );
-        Widget description3 = SafeText(
-            'Still working on it, need some ideas...'
-        );
-        
-        List<Widget> l = [
-            _compose_column(title1, description1, image1, true),
-            _compose_column(title2, description2, image2, false),
-            _compose_column(title3, description3, image3, true),
-        ];
-        return CupertinoScrollbar(
-            child: ListView.separated(
-                shrinkWrap: true,
-                itemCount: l.length,
-                itemBuilder: (_, idx) => l[idx],
-                separatorBuilder: (_, __) 
-                    => Divider(
-                        color: Color.fromRGBO(0, 0, 0, 0.3),
-                        height: 0,
-                        thickness: 1,
-                    ),      
             )
         );
     }
