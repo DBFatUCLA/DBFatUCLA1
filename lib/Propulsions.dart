@@ -122,9 +122,7 @@ class Propulsions extends StatelessWidget
         );
         Widget description2 = SafeText(
 '''
-Here is a really loooooooooooong line that has lots of content. So much content. You wouldn't believe the amount of content...\n
-Short line.\np\nr\no\np\nu\nl\ns\ni\no\nn\ns\n
-Now this is text that tries to leave the format...\nIt cannot.
+Here is a really loooooooooooong line that has lots of content. So much content. You wouldn't believe the amount of content...
 '''
         );
 
@@ -142,8 +140,6 @@ Now this is text that tries to leave the format...\nIt cannot.
         );
 
         List<Widget> l = [
-            _compose_two_columns(title1, description1, image1, 2, 1, true, 
-                _compose_two_columns(title1, description1, image1, 2, 1, true, 
             _compose_two_columns(title1, description1, image1, 2, 1, true, 
                     true),
             _compose_two_columns(title2, description2, image2, 1, 2, false,
@@ -187,9 +183,7 @@ Now this is text that tries to leave the format...\nIt cannot.
         );
         Widget description2 = SafeText(
 '''
-Here is a really loooooooooooong line that has lots of content. So much content. You wouldn't believe the amount of content...\n
-Short line.\np\nr\no\np\nu\nl\ns\ni\no\nn\ns\n
-Now this is text that tries to leave the format...\nIt cannot.
+Here is a really loooooooooooong line that has lots of content. So much content. You wouldn't believe the amount of content...
 '''
         );
 
@@ -218,13 +212,9 @@ Now this is text that tries to leave the format...\nIt cannot.
                 itemBuilder: (_, idx) => l[idx],
                 separatorBuilder: (_, __) 
                     => Divider(
-                        color: Colors.black,
+                        color: Color.fromRGBO(0, 0, 0, 0.3),
                         height: 0,
                         thickness: 1,
-                    thickness: 1, 
-                        thickness: 1,
-                    ),      
-                ),
                     ),      
             )
         );
