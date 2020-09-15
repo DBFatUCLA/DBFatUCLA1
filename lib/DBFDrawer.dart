@@ -72,7 +72,7 @@ class DBFDrawer extends Drawer
                                 thickness: 1,
                             );
                         }
-                        // Empty space divider -> no divider between logo and
+                        // Empty space divider: no divider between logo and
                         // first item.
                         return SizedBox();
                     }

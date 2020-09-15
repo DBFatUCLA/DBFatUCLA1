@@ -19,11 +19,7 @@ class TeamsInfo extends StatelessWidget
             color: Colors.white,
             child: Stack(
                 children: [
-                    CupertinoScrollbar(
-                        child: SingleChildScrollView(
-                            child: _content
-                        )
-                    ),
+                    _content,
                     Align(
                         alignment: Alignment.bottomLeft,
                         child: Container(

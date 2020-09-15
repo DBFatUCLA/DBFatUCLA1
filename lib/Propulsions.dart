@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'safetext.dart';
 import 'separator.dart';
@@ -140,15 +141,22 @@ Now this is text that tries to leave the format...\nIt cannot.
             'Still working on it, need some ideas...'
         );
 
-        return Column(
-            children: [
+        List<Widget> l = [
+            _compose_two_columns(title1, description1, image1, 2, 1, true, 
                 _compose_two_columns(title1, description1, image1, 2, 1, true, 
-                        true),
-                _compose_two_columns(title2, description2, image2, 1, 2, false,
-                        false),
-                _compose_two_columns(title3, description3, image3, 1, 1, true,
-                        true),
-            ],
+            _compose_two_columns(title1, description1, image1, 2, 1, true, 
+                    true),
+            _compose_two_columns(title2, description2, image2, 1, 2, false,
+                    false),
+            _compose_two_columns(title3, description3, image3, 1, 1, true,
+                    true),
+        ];
+        return CupertinoScrollbar(
+            child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: l.length,
+                itemBuilder: (_, idx) => l[idx],
+            )
         );
     }
 
@@ -203,16 +211,22 @@ Now this is text that tries to leave the format...\nIt cannot.
             _compose_column(title2, description2, image2, false),
             _compose_column(title3, description3, image3, true),
         ];
-        return ListView.separated(
-            shrinkWrap: true,
-            itemCount: l.length,
-            itemBuilder: (_, index) => l[index],
-            separatorBuilder: (_, index) 
-                => Divider(
-                    color: Color.fromRGBO(0, 0, 0, 0.35), 
+        return CupertinoScrollbar(
+            child: ListView.separated(
+                shrinkWrap: true,
+                itemCount: l.length,
+                itemBuilder: (_, idx) => l[idx],
+                separatorBuilder: (_, __) 
+                    => Divider(
+                        color: Colors.black,
+                        height: 0,
+                        thickness: 1,
                     thickness: 1, 
-                    height: 0
+                        thickness: 1,
+                    ),      
                 ),
+                    ),      
+            )
         );
     }
 }
