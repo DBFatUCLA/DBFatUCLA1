@@ -67,8 +67,6 @@ class DBFTeamsPage extends StatelessWidget
             bios.add(_make_bio_card(context, idx, _teams[idx], _colors[idx]));
 
         const double aspect_ratio = 16/9;
-        double height = MediaQuery.of(context).size.height;
-        double width = MediaQuery.of(context).size.width;
 
         return Stack(
             children: <Widget> [
@@ -77,8 +75,8 @@ class DBFTeamsPage extends StatelessWidget
                         './assets/images/teamsbackground.jpg'
                     ),
                     fit: BoxFit.fill,
-                    height: height,
-                    width: width,
+                    width: double.infinity,
+                    height: double.infinity
                 ),
                 Container(
                     color: Color.fromRGBO(0, 0, 0, 0.5)
@@ -89,7 +87,7 @@ class DBFTeamsPage extends StatelessWidget
                         children: bios,
                         childAspectRatio: aspect_ratio,
                         padding: _padding,
-                    )
+                    ),
                 )
             ]
         );

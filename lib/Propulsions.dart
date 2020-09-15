@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'safetext.dart';
 import 'separator.dart';
 
-const Color LIGHT_GREY = Color.fromRGBO(205, 205, 205, 1);
-const String PATH = './assets/images';
+const Color DbfLogoBackgroundBlue = Color.fromRGBO(196, 229, 252, 1.0);
+const String path = './assets/images';
 
 class Propulsions extends StatelessWidget
 {
-    const Propulsions();
+    final Color _alt_background;
+
+    const Propulsions({Color alt_background=DbfLogoBackgroundBlue})
+        : _alt_background = alt_background;
 
     @override Widget 
     build(BuildContext context)
@@ -28,7 +31,7 @@ class Propulsions extends StatelessWidget
     Widget 
     _compose_two_columns(Widget title, Widget description, Widget image, 
             int flex_left, int flex_right, bool text_on_left, 
-            bool do_use_grey_background)
+            bool use_alt_background)
     {
         Widget text = Container(
             child: Column(
@@ -43,7 +46,7 @@ class Propulsions extends StatelessWidget
         );
         
         return Container( 
-            color: do_use_grey_background? LIGHT_GREY : Colors.transparent,
+            color: use_alt_background? _alt_background : Colors.transparent,
             child: Container(
                 child: Row(
                     children: [
@@ -63,12 +66,39 @@ class Propulsions extends StatelessWidget
             )
         );
     }
+    
+    Widget 
+    _compose_column(Widget title, Widget description, Widget image, 
+            bool use_alt_background)
+    {
+        return Container(
+            color: use_alt_background? _alt_background : Colors.white,
+            child: Column(
+                children: [
+                    Container(
+                        child: Column(
+                            children: [
+                                title,
+                                Separator(color: Colors.black, length: 48.0,),
+                                description,
+                            ],
+                        ),
+                        margin: EdgeInsets.fromLTRB(4, 4, 4, 0),
+                    ),
+                    Card(
+                        child: image,
+                        margin: EdgeInsets.all(8.0)
+                    )
+                ],
+            )
+        );
+    }
 
     Widget 
     _build_tablet(BuildContext context)
     {
         Widget image1 = const Image(  
-            image: AssetImage('${PATH}/img0.jpg'),
+            image: AssetImage('${path}/img0.jpg'),
             fit: BoxFit.fill
         );
         Widget title1 = SafeText(
@@ -81,7 +111,7 @@ class Propulsions extends StatelessWidget
         );
 
         Widget image2 = const Image(
-            image: AssetImage('${PATH}/img1.png'),
+            image: AssetImage('${path}/img1.png'),
             fit: BoxFit.fill
         );
         Widget title2 = SafeText( 
@@ -98,7 +128,7 @@ Now this is text that tries to leave the format...\nIt cannot.
         );
 
         Widget image3 = const Image(  
-            image: AssetImage('${PATH}/img2.jpg'),
+            image: AssetImage('${path}/img2.jpg'),
             fit: BoxFit.fill
         );
         Widget title3 = SafeText(
@@ -125,25 +155,64 @@ Now this is text that tries to leave the format...\nIt cannot.
     Widget 
     _build_mobile(BuildContext context)
     {
-        return Column(
-            children: [
-                Card( 
-                    color: LIGHT_GREY,
-                    child: Column(
-                        children: [
-                            SafeText(
-                                'Propulsions', 
-                                fontSize: 36.0, 
-                                fontWeight: FontWeight.bold,
-                            ),
-                            SafeText('Something here...'),
-                            const Image( 
-                                image: AssetImage('./assets/images/img0.jpg')
-                            )
-                        ],
-                    ),
-                )
-            ],
+        Widget image1 = const Image(  
+            image: AssetImage('${path}/img0.jpg'),
+            fit: BoxFit.fitWidth
+        );
+        Widget title1 = SafeText(
+            'Propulsions',
+            fontSize: 36.0,
+            fontWeight: FontWeight.bold,
+        );
+        Widget description1 = SafeText(
+            'This is the format which I have code to duplicate.\n'
+        );
+
+        Widget image2 = const Image(
+            image: AssetImage('${path}/img1.png'),
+            fit: BoxFit.fitWidth
+        );
+        Widget title2 = SafeText( 
+            'Reversed so Image is on left.',
+            fontSize: 36.0,
+            fontWeight: FontWeight.bold,
+        );
+        Widget description2 = SafeText(
+'''
+Here is a really loooooooooooong line that has lots of content. So much content. You wouldn't believe the amount of content...\n
+Short line.\np\nr\no\np\nu\nl\ns\ni\no\nn\ns\n
+Now this is text that tries to leave the format...\nIt cannot.
+'''
+        );
+
+        Widget image3 = const Image(  
+            image: AssetImage('${path}/img2.jpg'),
+            fit: BoxFit.fitWidth
+        );
+        Widget title3 = SafeText(
+            'Mobile?',
+            fontSize: 36.0,
+            fontWeight: FontWeight.bold,
+        );
+        Widget description3 = SafeText(
+            'Still working on it, need some ideas...'
+        );
+        
+        List<Widget> l = [
+            _compose_column(title1, description1, image1, true),
+            _compose_column(title2, description2, image2, false),
+            _compose_column(title3, description3, image3, true),
+        ];
+        return ListView.separated(
+            shrinkWrap: true,
+            itemCount: l.length,
+            itemBuilder: (_, index) => l[index],
+            separatorBuilder: (_, index) 
+                => Divider(
+                    color: Color.fromRGBO(0, 0, 0, 0.35), 
+                    thickness: 1, 
+                    height: 0
+                ),
         );
     }
 }

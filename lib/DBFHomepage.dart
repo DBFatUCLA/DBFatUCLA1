@@ -21,7 +21,7 @@ class DBFHomepage extends StatefulWidget
 class _DBFHomepage extends State<DBFHomepage>
 {
     Timer _timer;
-    int _image = 0;
+    static int _image = 0;
 
     @override void
     initState()
@@ -53,8 +53,6 @@ class _DBFHomepage extends State<DBFHomepage>
     @override Widget
     build(BuildContext context)
     {
-        double width = MediaQuery.of(context).size.width;
-        double height = MediaQuery.of(context).size.height;
         return Stack(
             children: <Widget> [
                 AnimatedSwitcher(
@@ -62,15 +60,15 @@ class _DBFHomepage extends State<DBFHomepage>
                     child: Image(
                         image: DBFHomepage._rotating_images[_image],
                         fit: BoxFit.fill,
-                        width: width,
-                        height: height,
-                        key: ValueKey<int>(_image)
+                        key: ValueKey<int>(_image),
+                        width: double.infinity,
+                        height: double.infinity,
                     )
                 ),
                 Container(
                     // Darkness filter.
                     color: Color.fromRGBO(0, 0, 0, 0.5)
-                ),    
+                ),
                 Center(
                     child: const Text(
                         'Welcome to Design Build Fly @ UCLA!',

@@ -31,34 +31,19 @@ class _ButtonWithDropdown extends State<ButtonWithDropdown>
     @override Widget 
     build(BuildContext context)
     {
-        FlatButton button;
-        List<Widget> button_display;
-
-        if (_retracted)
-        {
-            button_display = [
-                Icon(Icons.expand_more),
-                Text(widget.name, style: widget.name_style)
-            ];
-        }
-        else
-        {
-            button_display = [
-                Icon(Icons.expand_more),
-                Text(widget.name, style: widget.name_style)
-            ];
-        }
-        button = FlatButton(
-            child: Row(
-                children: button_display
-            ),
-            onPressed: () => setState(() { _retracted = !_retracted; })
-        );
-
         return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-                button, 
+                FlatButton(
+                    child: Row(
+                        children: <Widget> [
+                            if (_retracted) Icon(Icons.expand_more),
+                            if (!_retracted) Icon(Icons.expand_more),
+                            Text(widget.name, style: widget.name_style)
+                        ]
+                    ),
+                    onPressed: () => setState(() { _retracted = !_retracted; })
+                ), 
                 Container(
                     padding: EdgeInsets.fromLTRB(35.0, 0, 0, 0),
                     child: Separator(

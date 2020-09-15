@@ -190,7 +190,7 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent>
             drawer: DBFDrawer(
                 page_names: DBFWebsiteContent.page_names_drawer,
                 change_page: _change_page,
-            )
+            ),
         );
     }
 }
