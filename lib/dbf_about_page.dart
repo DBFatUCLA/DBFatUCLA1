@@ -13,8 +13,8 @@ class DbfAboutPage extends StatelessWidget
     const DbfAboutPage({Key key}) : super(key: key);
 
     static Widget
-    _compose_text(String title, String description, {Color color: Colors.black,
-            String fontFamily: SafeText.cambria})
+    _compose_text(String title, String description, {Color color=Colors.black,
+            String fontFamily=SafeText.caladea})
     {
         TextStyle title_style = TextStyle(
             color: color,

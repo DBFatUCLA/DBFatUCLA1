@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 /// Selectable text that meets standards for reading.
 class SafeText extends SelectableText
 {
-    static const String cambria = 'Cambria';
+    static const String caladea = 'Caladea';
     static const double _min_font_size = 18.0;
     static const Color _default_color = Colors.black;
 
@@ -15,7 +15,7 @@ class SafeText extends SelectableText
     final Color _color;
 
     SafeText(text, {Key key, TextAlign textAlign=TextAlign.center,
-            String fontFamily=SafeText.cambria,
+            String fontFamily=SafeText.caladea,
             double fontSize=SafeText._min_font_size,
             FontWeight fontWeight=FontWeight.normal,
             Color color=SafeText._default_color})
