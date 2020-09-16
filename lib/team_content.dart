@@ -1,5 +1,8 @@
 abstract class TeamContent
 {
+    String get
+    team_name;
+    
     List<Content> get 
     content;
 

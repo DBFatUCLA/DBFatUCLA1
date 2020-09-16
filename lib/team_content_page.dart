@@ -6,6 +6,9 @@ import 'safetext.dart';
 import 'separator.dart';
 
 const Color DbfLogoBackgroundBlue = Color.fromRGBO(196, 229, 252, 1.0);
+const double largePadding = 32;
+const double smallPadding = 12;
+const double separatorLength = 48;
 const String path = './assets/images';
 
 /**
@@ -82,13 +85,16 @@ class TeamContentPage extends StatelessWidget
     _compose_no_image(Widget title, Widget description, bool use_alt_background)
     {
         return Container(
-            color: use_alt_background? _alt_background : Colors.white,
-            margin: EdgeInsets.fromLTRB(32, 10, 32, 0),
+            color: use_alt_background? _alt_background : Colors.transparent,
+            margin: EdgeInsets.symmetric(
+                horizontal: largePadding,
+                vertical: smallPadding
+            ),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                     title,
-                    Separator(color: Colors.black, length: 48.0,),
+                    Separator(color: Colors.black, length: separatorLength,),
                     description,
                 ],
             )
@@ -105,7 +111,7 @@ class TeamContentPage extends StatelessWidget
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
                 title, 
-                Separator(color: Colors.black, length: 48.0,),
+                Separator(color: Colors.black, length: separatorLength,),
                 description
             ],
         );
@@ -119,14 +125,17 @@ class TeamContentPage extends StatelessWidget
                             flex: flex_left,
                             child: text_on_left? text : image
                         ),
-                        Container(width: 32,),
+                        Container(width: largePadding,),
                         Expanded( 
                             flex: flex_right,
                             child: text_on_left? image : text,
                         ),
                     ]
                 ),
-                margin: EdgeInsets.symmetric(horizontal: 32, vertical: 12)
+                margin: EdgeInsets.symmetric(
+                    horizontal: largePadding, 
+                    vertical: smallPadding
+                )
             )
         );
     }
@@ -136,7 +145,11 @@ class TeamContentPage extends StatelessWidget
             bool use_alt_background)
     {
         return Container(
-            color: use_alt_background? _alt_background : Colors.white,
+            color: use_alt_background? _alt_background : Colors.transparent,
+            padding: EdgeInsets.symmetric(
+                horizontal: largePadding,
+                vertical: smallPadding
+            ),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -145,16 +158,16 @@ class TeamContentPage extends StatelessWidget
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                                 title,
-                                Separator(color: Colors.black, length: 48.0,),
+                                Separator(
+                                    color: Colors.black, 
+                                    length: separatorLength,
+                                ),
                                 description,
                             ],
                         ),
-                        margin: EdgeInsets.fromLTRB(32, 4, 32, 0),
                     ),
-                    Card(
-                        child: image,
-                        margin: EdgeInsets.all(12.0)
-                    )
+                    Container(height: smallPadding,),
+                    image
                 ],
             )
         );

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'team_content.dart';
 import 'team_content_page.dart';
 
-const Color MIDNIGHT_BLUE = Color.fromRGBO(25, 25, 112, 1.0);
+const Color midnightBlue = Color.fromRGBO(25, 25, 112, 1.0);
 
 /**
  * Overlays the Team's content page with a back button that returns to the
@@ -18,21 +18,25 @@ class TeamContentOverlay extends StatelessWidget
     TeamContentOverlay(TeamContent content, void Function() return_to_parent)
         : _content = content,
           _ret_to_parent = return_to_parent;
-          
-    @override Widget 
+
+    @override Widget
     build(BuildContext context)
     {
-        return Container(
-            color: Colors.white,
-            child: Stack(
-                children: [
-                    TeamContentPage(_content),
-                    Align(
-                        alignment: Alignment.bottomLeft,
-                        child: Container(
-                            margin: EdgeInsets.fromLTRB(16.0, 0, 0, 8.0),
-                            child: RaisedButton(
-                                color: MIDNIGHT_BLUE,
+        return Column(
+            children: [
+                Expanded(
+                    child: Container(
+                        color: Colors.white,
+                        child: TeamContentPage(_content)
+                    )
+                ),
+                Container(
+                    color: midnightBlue.withOpacity(0.9),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                            FlatButton(
+                                color: Colors.transparent,
                                 onPressed: _ret_to_parent, 
                                 child: Row(
                                     mainAxisSize: MainAxisSize.min,
@@ -44,18 +48,29 @@ class TeamContentOverlay extends StatelessWidget
                                         Text(
                                             'Teams',
                                             style: TextStyle( 
-                                                fontSize: 18.0,
+                                                fontSize: 22.0,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white
                                             ),
                                         ),
                                     ],
                                 )
+                            ),
+                            Container(
+                                margin: EdgeInsets.fromLTRB(0, 0, 12, 0),
+                                child: Text(
+                                    _content.team_name,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontSize: 25,
+                                        color: Colors.white
+                                    ),
+                                )
                             )
-                        )
-                    ),
-                ],
-            )
+                        ]
+                    )
+                )
+            ],
         );
     }
 }

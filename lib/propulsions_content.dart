@@ -2,6 +2,9 @@ import 'team_content.dart';
 
 class PropulsionsContent implements TeamContent 
 {
+    String get
+    team_name => 'Propulsions';
+    
     List<Content> get
     content 
     {
