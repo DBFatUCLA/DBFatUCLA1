@@ -3,13 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'safetext.dart';
-import 'ButtonWithDropdown.dart';
+import 'button_with_dropdown.dart';
 
-/// About page for the website.
-/// Is a column of ButtonWithDropdown widgets.
-class DBFAboutPage extends StatelessWidget
+/**
+ * About page that consists of ButtonWithDropdowns.
+ */
+class DbfAboutPage extends StatelessWidget
 {
-    const DBFAboutPage({Key key}) : super(key: key);
+    const DbfAboutPage({Key key}) : super(key: key);
 
     static Widget
     _compose_text(String title, String description, {Color color: Colors.black,

@@ -1,14 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'team_content.dart';
+import 'team_content_page.dart';
+
 const Color MIDNIGHT_BLUE = Color.fromRGBO(25, 25, 112, 1.0);
 
-class TeamsInfo extends StatelessWidget
+/**
+ * Overlays the Team's content page with a back button that returns to the
+ * Teams Overview Page.
+ */
+class TeamContentOverlay extends StatelessWidget
 {
-    final Widget _content;
+    final TeamContent _content;
     final void Function() _ret_to_parent;
 
-    TeamsInfo(Widget content, void Function() return_to_parent)
+    TeamContentOverlay(TeamContent content, void Function() return_to_parent)
         : _content = content,
           _ret_to_parent = return_to_parent;
           
@@ -19,7 +26,7 @@ class TeamsInfo extends StatelessWidget
             color: Colors.white,
             child: Stack(
                 children: [
-                    _content,
+                    TeamContentPage(_content),
                     Align(
                         alignment: Alignment.bottomLeft,
                         child: Container(

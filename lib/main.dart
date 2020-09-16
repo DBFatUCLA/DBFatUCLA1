@@ -1,14 +1,14 @@
-import 'package:dbf_v10/DBFAboutPage.dart';
-import 'package:dbf_v10/DBFDrawer.dart';
+import 'package:dbf_v10/dbf_about_page.dart';
+import 'package:dbf_v10/dbf_drawer.dart';
 
 import 'package:flutter/material.dart';
 
-import 'DBFAppBar.dart';
-import 'DBFHomepage.dart';
-import 'DBFAboutPage.dart';
-import 'DBFTeamsPage.dart';
-import 'TeamsInfo.dart';
-import 'Propulsions.dart';
+import 'dbf_app_bar.dart';
+import 'dbf_homepage.dart';
+import 'dbf_about_page.dart';
+import 'dbf_all_teams_page.dart';
+import 'team_content_overlay.dart';
+import 'propulsions_content.dart';
 
 void main() => runApp(DBFWebsite());
 
@@ -47,15 +47,16 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent>
     int _current_context_idx;
 
     _DBFWebsiteContent()
-        : _content = DBFHomepage(),
+        : _content = DbfHomepage(),
           _last_content_idx = 0,
           _current_context_idx = 0
     {
         _pages = [
-            (() => DBFHomepage()),
-            (() => DBFAboutPage()),
-            (() => DBFTeamsPage((idx) => _change_page(idx + 3))),
-            (() => TeamsInfo(const Propulsions(), () => _change_page(2)))
+            (() => DbfHomepage()),
+            (() => DbfAboutPage()),
+            (() => DbfAllTeamsPage((idx) => _change_page(idx + 3))),
+            (() => TeamContentOverlay(PropulsionsContent(), 
+                    () => _change_page(2)))
         ];
     }
 
@@ -156,7 +157,7 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent>
     _build_tablet(BuildContext context)
     {
         return Scaffold(
-            appBar: DBFAppBar(
+            appBar: DbfAppBar(
                 page_names: DBFWebsiteContent.page_names,
                 change_page: _change_page,
                 is_mobile: false,
@@ -175,7 +176,7 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent>
     _build_mobile(BuildContext context)
     {
         return Scaffold(
-            appBar: DBFAppBar(
+            appBar: DbfAppBar(
                 page_names: DBFWebsiteContent.page_names,
                 change_page: _change_page,
                 is_mobile: true,
@@ -187,7 +188,7 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent>
                 switchOutCurve: Curves.fastOutSlowIn.flipped,
                 transitionBuilder: _transition_function
             ),
-            drawer: DBFDrawer(
+            drawer: DbfDrawer(
                 page_names: DBFWebsiteContent.page_names_drawer,
                 change_page: _change_page,
             ),

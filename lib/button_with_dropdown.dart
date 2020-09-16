@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'Separator.dart';
 
-/// Class that exists in 2 states.
-/// 1. Button with a expand icon and the title
-/// 2. Button with a contract icon and title, underneath is a blurb containing
-///     the description of the title.
-/// Click the button to swap between states.
+/**
+ * Class that exists in 2 states.
+ * 1. Button with a expand icon and the title
+ * 2. Button with a contract icon and title, underneath is a blurb containing
+ *    the description of the title.
+ * Click the button to swap between states.
+ */
 class ButtonWithDropdown extends StatefulWidget
 {
     final String name;

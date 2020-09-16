@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-
-/// Page with cards team names. Pressing on them brings up a description via
-///     dialog.
-/// Cards are colored, which get shuffled everytime the page is loaded.
-class DBFTeamsPage extends StatelessWidget
+const EdgeInsetsGeometry padding = EdgeInsets.all(12.0);
+    
+/**
+ * Page with all the DBF teams as cards in a GridView. Clicking on a card will
+ * pull up the appropriate Team's info page.
+ */
+class DbfAllTeamsPage extends StatelessWidget
 {
-    static const EdgeInsetsGeometry _padding = EdgeInsets.all(12.0);
     static const List<String> _teams = [
         'Propulsions',
         'Manufacturing',
@@ -23,12 +24,12 @@ class DBFTeamsPage extends StatelessWidget
         Colors.teal,
         Colors.amber,
         Colors.blueAccent,
-        Colors.lightBlueAccent
+        Colors.deepOrange,
     ];
     
     final void Function(int) _change_page;
 
-    DBFTeamsPage(void Function(int) change_page, {Key key})
+    DbfAllTeamsPage(void Function(int) change_page, {Key key})
         : _change_page = change_page,
           super(key: key)
     {
@@ -54,7 +55,7 @@ class DBFTeamsPage extends StatelessWidget
                     onPressed: () => _change_page(idx)
                 ),
                 color: color,
-                margin: _padding,
+                margin: padding,
             ),
         );
     }
@@ -86,7 +87,7 @@ class DBFTeamsPage extends StatelessWidget
                         maxCrossAxisExtent: 500.0,
                         children: bios,
                         childAspectRatio: aspect_ratio,
-                        padding: _padding,
+                        padding: padding,
                     ),
                 )
             ]

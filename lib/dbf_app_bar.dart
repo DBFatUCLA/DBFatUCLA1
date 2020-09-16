@@ -1,32 +1,25 @@
 import 'package:flutter/material.dart';
 
-/// Appbar for the top of the website. Main purpose is to swap out the pages.
-/// Has a mobile version.
-/// 
-/// Takes in a list of strings of the pages to display, and a function to
-///     notify it's parent that the page has changed.
-/// First item in the list of strings will the the title item, and if not on
-///     mobile, will include the logo as part of the title. The title item is
-///     rendered differently from the other items, mainly in font and size.
-/// Other items are rendered with a underline under some portion of the name.
-/// The mobile version will include a leading `dehaze` icon to open the mobile
-///     drawer which takes over role of page switcher.
-class DBFAppBar extends StatelessWidget implements PreferredSizeWidget
-{
-    static const Color _text_color = Colors.white;
-    static const Color _midnight_blue = Color.fromRGBO(25, 25, 112, 1.0);
-    static const Color _highlight = Color.fromRGBO(255, 255, 255, 0.25);
-    static const Color _splash_color = Color.fromRGBO(255, 255, 255, 0.5);
-    static const String _font = 'Montserrat';
-    static const String _title_font = 'Questrial';
+const Color textColor = Colors.white;
+const Color midnightBlue = Color.fromRGBO(25, 25, 112, 1.0);
+const Color highlight = Color.fromRGBO(255, 255, 255, 0.25);
+const Color splashColor = Color.fromRGBO(255, 255, 255, 0.5);
+const String font = 'Montserrat';
+const String titleFont = 'Questrial';
 
+/**
+ * Appbar for the top of the website. Main purpose is to swap out the pages.
+ * Will render differently for mobile and non-mobile.
+ */
+class DbfAppBar extends StatelessWidget implements PreferredSizeWidget
+{
     @override final Size preferredSize;
 
     final List<String> _page_names;
     final Function(int) _change_page;
     final bool _is_mobile;
 
-    DBFAppBar({Key key, List<String> page_names, Function(int) change_page, 
+    DbfAppBar({Key key, List<String> page_names, Function(int) change_page, 
             bool is_mobile: false})
         : preferredSize = const Size(double.infinity, 75.0),
           _page_names = page_names,
@@ -49,11 +42,11 @@ class DBFAppBar extends StatelessWidget implements PreferredSizeWidget
             height: preferredSize.height,
             alignment: Alignment.center,
             child: FlatButton(
-                splashColor: DBFAppBar._splash_color,
+                splashColor: splashColor,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero
                 ),
-                hoverColor: DBFAppBar._highlight,
+                hoverColor: highlight,
                 child: Container(
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,14 +56,14 @@ class DBFAppBar extends StatelessWidget implements PreferredSizeWidget
                                 _page_names[page_idx],
                                 style: TextStyle(
                                     fontSize: 25,
-                                    fontFamily: DBFAppBar._font,
-                                    color: _text_color
+                                    fontFamily: font,
+                                    color: textColor
                                 ),
                             ),
                             Container(
                                 height: 2.0,
                                 width: 18.0,
-                                color: _text_color
+                                color: textColor
                             )
                         ]
                     ),
@@ -90,9 +83,9 @@ class DBFAppBar extends StatelessWidget implements PreferredSizeWidget
             appbar_row.add(
                 Container(
                     child: FlatButton(
-                        textColor: DBFAppBar._text_color,
-                        hoverColor: DBFAppBar._highlight,
-                        splashColor: DBFAppBar._splash_color,
+                        textColor: textColor,
+                        hoverColor: highlight,
+                        splashColor: splashColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.zero
                         ),
@@ -113,7 +106,7 @@ class DBFAppBar extends StatelessWidget implements PreferredSizeWidget
                                 Text(
                                     _page_names[0],
                                     style: TextStyle(
-                                        fontFamily: DBFAppBar._title_font,
+                                        fontFamily: titleFont,
                                         fontSize: 35,
                                         fontWeight: FontWeight.bold
                                     ),
@@ -131,7 +124,7 @@ class DBFAppBar extends StatelessWidget implements PreferredSizeWidget
 
         return AppBar(
             automaticallyImplyLeading: false,
-            backgroundColor: DBFAppBar._midnight_blue,
+            backgroundColor: midnightBlue,
             toolbarHeight: preferredSize.height,
             title: Container(
                 child: Row(
@@ -151,9 +144,9 @@ class DBFAppBar extends StatelessWidget implements PreferredSizeWidget
             appbar_row.add(
                 Container(
                     child: FlatButton(
-                        textColor: DBFAppBar._text_color,
-                        hoverColor: DBFAppBar._highlight,
-                        splashColor: DBFAppBar._splash_color,
+                        textColor: textColor,
+                        hoverColor: highlight,
+                        splashColor: splashColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.zero
                         ),
@@ -164,7 +157,7 @@ class DBFAppBar extends StatelessWidget implements PreferredSizeWidget
                         child: Text(
                             _page_names[0],
                             style: TextStyle(
-                                fontFamily: DBFAppBar._title_font,
+                                fontFamily: titleFont,
                                 fontSize: 35,
                                 fontWeight: FontWeight.bold
                             ),
@@ -177,7 +170,7 @@ class DBFAppBar extends StatelessWidget implements PreferredSizeWidget
 
         return AppBar(
             automaticallyImplyLeading: false,
-            backgroundColor: DBFAppBar._midnight_blue,
+            backgroundColor: midnightBlue,
             toolbarHeight: preferredSize.height,
             leading: IconButton(
                 icon: Icon(Icons.dehaze),

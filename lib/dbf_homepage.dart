@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-/// Welcome page that is the first thing visitors see. 
-/// Rotates between a select number of images with a Welcome message in the 
-///     center.
-class DBFHomepage extends StatefulWidget
-{
-    static const String _path = './assets/images';
-    static const int _timer_period = 5;
-    static const List<AssetImage> _rotating_images = [
-        AssetImage('${_path}/img0.jpg'),
-        AssetImage('${_path}/img1.png'),
-        AssetImage('${_path}/img2.jpg')
-    ];
+const String path = './assets/images';
+const int timerPeriod = 5;
+const List<AssetImage> rotatingImages = [
+    AssetImage('${path}/img0.jpg'),
+    AssetImage('${path}/img1.png'),
+    AssetImage('${path}/img2.jpg')
+];
 
-    @override _DBFHomepage
-    createState() => _DBFHomepage();
+/**
+ * Welcome page of the website.
+ * Carousels through images in the background while a welcome message is 
+ * displayed in the center.
+ */
+class DbfHomepage extends StatefulWidget
+{
+    @override _DbfHomepage
+    createState() => _DbfHomepage();
 }
 
-class _DBFHomepage extends State<DBFHomepage>
+class _DbfHomepage extends State<DbfHomepage>
 {
     Timer _timer;
     static int _image = 0;
@@ -29,14 +31,13 @@ class _DBFHomepage extends State<DBFHomepage>
         super.initState();
         _timer = Timer.periodic(
             Duration(
-                seconds: DBFHomepage._timer_period
+                seconds: timerPeriod
             ),
             (timer)
             {
                 setState(()
                 {
-                    _image = (_image + 1) 
-                        % DBFHomepage._rotating_images.length;
+                    _image = (_image + 1) % rotatingImages.length;
                 });
             }
         );
@@ -58,7 +59,7 @@ class _DBFHomepage extends State<DBFHomepage>
                 AnimatedSwitcher(
                     duration: const Duration(milliseconds: 750),
                     child: Image(
-                        image: DBFHomepage._rotating_images[_image],
+                        image: rotatingImages[_image],
                         fit: BoxFit.fill,
                         key: ValueKey<int>(_image),
                         width: double.infinity,

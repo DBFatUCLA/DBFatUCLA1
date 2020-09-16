@@ -1,17 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// Drawer that shows up if the screen is in mobile mode.
-/// Takes over the functionality of the appbar in switching the pages.
-/// Drawer is a column consisting of the Logo, and the pages of the app.
-class DBFDrawer extends Drawer
-{
-    static Color _midnight_blue = Color.fromRGBO(25, 25, 112, 1.0);
+const Color midnightBlue = Color.fromRGBO(25, 25, 112, 1);
 
+/** 
+ * Drawer that shows up if the screen is in mobile mode.
+ * Takes over the functionality of the appbar in switching the pages.
+ * Drawer is a ListView consisting of the Logo, and the pages of the app.
+ */
+class DbfDrawer extends Drawer
+{
     final List<String> _page_names;
     final void Function(int) _change_page;
 
-    DBFDrawer({Key key, List<String> page_names, Function(int) change_page})
+    DbfDrawer({Key key, List<String> page_names, Function(int) change_page})
         : _page_names = page_names,
           _change_page = change_page,
           super(key: key);
@@ -77,7 +79,7 @@ class DBFDrawer extends Drawer
                         return SizedBox();
                     }
                 ),
-                color: DBFDrawer._midnight_blue
+                color: midnightBlue
             )
         );
     }

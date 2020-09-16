@@ -1,86 +1,69 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+import 'team_content.dart';
 import 'safetext.dart';
 import 'separator.dart';
 
 const Color DbfLogoBackgroundBlue = Color.fromRGBO(196, 229, 252, 1.0);
 const String path = './assets/images';
 
-class Propulsions extends StatelessWidget
+/**
+ * Actual Widget that displays the content & images of a Team's info page.
+ * Content and tiling are controled by the TeamContent object.
+ */
+class TeamContentPage extends StatelessWidget
 {
     final Color _alt_background;
+    final TeamContent _content;
 
-    const Propulsions({Color alt_background=DbfLogoBackgroundBlue})
-        : _alt_background = alt_background;
+    const TeamContentPage(TeamContent content, {
+            Color alt_background=DbfLogoBackgroundBlue})
+        : _alt_background = alt_background,
+          _content = content;
 
     @override Widget 
     build(BuildContext context)
     {
-        Widget image1 = const Image(  
-            image: AssetImage('${path}/img0.jpg'),
-            fit: BoxFit.fill
-        );
-        Widget title1 = SafeText(
-            'Propulsions',
-            fontSize: 36.0,
-            fontWeight: FontWeight.bold,
-        );
-        Widget description1 = SafeText(
-            'This is the format which I have code to duplicate.\n'
-        );
+        final bool build_tablet = MediaQuery.of(context).size.width > 600;
+        final Widget Function(BuildContext context, int idx) func =
+            (_, idx)
+            {
+                Content c = _content.content[idx];
+                Format f = _content.format[idx];
+                SafeText title = SafeText(
+                    c.title, 
+                    fontSize: 36,
+                    fontWeight: FontWeight.bold,
+                );
+                SafeText description = SafeText(
+                    c.description
+                );
 
-        Widget image2 = const Image(
-            image: AssetImage('${path}/img1.png'),
-            fit: BoxFit.fill
-        );
-        Widget title2 = SafeText( 
-            'Reversed so Image is on left.',
-            fontSize: 36.0,
-            fontWeight: FontWeight.bold,
-        );
-        Widget description2 = SafeText(
-'''
-Here is a really loooooooooooong line that has lots of content. So much content. You wouldn't believe the amount of content...
-'''
-        );
-
-        Widget image3 = const Image(  
-            image: AssetImage('${path}/img2.jpg'),
-            fit: BoxFit.fill
-        );
-        Widget title3 = SafeText(
-            'Mobile?',
-            fontSize: 36.0,
-            fontWeight: FontWeight.bold,
-        );
-        Widget description3 = SafeText(
-            'Still working on it, need some ideas...'
-        );
-        
-        bool build_tablet = MediaQuery.of(context).size.width > 600;
-        final List<Widget> l = [
-            if (build_tablet) ...[
-                _compose_two_columns(title1, description1, image1, 2, 1, true, 
-                        true),
-                _compose_two_columns(title2, description2, image2, 1, 2, false,
-                        false),
-                _compose_two_columns(title3, description3, image3, 1, 1, true,
-                        true),
-            ],
-            if (!build_tablet) ...[
-                _compose_column(title1, description1, image1, true),
-                _compose_column(title2, description2, image2, false),
-                _compose_column(title3, description3, image3, true),
-            ]
-        ];
+                if (c.image == null)
+                {
+                    return _compose_no_image(title, description, 
+                            f.use_alt_color);
+                }
+                
+                Image image = Image(
+                    image: AssetImage('${path}/${c.image}'),
+                    fit: BoxFit.fill
+                );
+                if (build_tablet)
+                {
+                    return _compose_two_columns(title, description, image, 
+                            f.left_flex, f.right_flex, f.text_on_left, 
+                            f.use_alt_color);
+                }
+                return _compose_column(title, description, image, 
+                        f.use_alt_color);
+            };
         return SafeArea(
             child: CupertinoScrollbar(
                 child: ListView.separated(
-                    itemCount: l.length,
-                    itemBuilder: (_, idx) => l[idx],
+                    itemCount: _content.content.length,
+                    itemBuilder: func,
                     separatorBuilder: (_, __)
                         => Divider(
                             color: Color.fromRGBO(0, 0, 0, 0.3),
@@ -88,6 +71,23 @@ Here is a really loooooooooooong line that has lots of content. So much content.
                             thickness: 1,
                         ),      
                 )
+            )
+        );
+    }
+    
+    Widget 
+    _compose_no_image(Widget title, Widget description, bool use_alt_background)
+    {
+        return Container(
+            color: use_alt_background? _alt_background : Colors.white,
+            margin: EdgeInsets.fromLTRB(32, 10, 32, 0),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                    title,
+                    Separator(color: Colors.black, length: 48.0,),
+                    description,
+                ],
             )
         );
     }
