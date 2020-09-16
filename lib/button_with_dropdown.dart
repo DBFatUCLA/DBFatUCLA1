@@ -40,7 +40,7 @@ class _ButtonWithDropdown extends State<ButtonWithDropdown>
                     child: Row(
                         children: <Widget> [
                             if (_retracted) Icon(Icons.expand_more),
-                            if (!_retracted) Icon(Icons.expand_more),
+                            if (!_retracted) Icon(Icons.expand_less),
                             Text(widget.name, style: widget.name_style)
                         ]
                     ),

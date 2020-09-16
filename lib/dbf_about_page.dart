@@ -14,7 +14,7 @@ class DbfAboutPage extends StatelessWidget
 
     static Widget
     _compose_text(String title, String description, {Color color=Colors.black,
-            String fontFamily=SafeText.caladea})
+            String fontFamily=SafeText.serif})
     {
         TextStyle title_style = TextStyle(
             color: color,

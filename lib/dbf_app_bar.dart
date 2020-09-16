@@ -4,8 +4,7 @@ const Color textColor = Colors.white;
 const Color midnightBlue = Color.fromRGBO(25, 25, 112, 1.0);
 const Color highlight = Color.fromRGBO(255, 255, 255, 0.25);
 const Color splashColor = Color.fromRGBO(255, 255, 255, 0.5);
-const String font = 'Montserrat';
-const String titleFont = 'Questrial';
+const String font = 'Arial';
 
 /**
  * Appbar for the top of the website. Main purpose is to swap out the pages.
@@ -106,9 +105,8 @@ class DbfAppBar extends StatelessWidget implements PreferredSizeWidget
                                 Text(
                                     _page_names[0],
                                     style: TextStyle(
-                                        fontFamily: titleFont,
+                                        fontFamily: font,
                                         fontSize: 35,
-                                        fontWeight: FontWeight.bold
                                     ),
                                 )
                             ]
@@ -157,9 +155,8 @@ class DbfAppBar extends StatelessWidget implements PreferredSizeWidget
                         child: Text(
                             _page_names[0],
                             style: TextStyle(
-                                fontFamily: titleFont,
+                                fontFamily: font,
                                 fontSize: 35,
-                                fontWeight: FontWeight.bold
                             ),
                         )
                     ),
