@@ -13,7 +13,7 @@ class PropulsionsContent implements TeamContent
             ),
             Content( 
                 'Reversed so Image is on left.',
-'''Here is a really loooooooooooong line that has lots of content. So much content. You wouldn't believe the amount of content...''',
+'''Here is a really loooooooooooong line that has lots of content. So much content. You wouldn't believe the amount of content...\n\n\n\n\n\n\n\n\n\n\n\n\n\nsurprise''',
                 'img1.png'
             ),
             Content(
@@ -23,7 +23,7 @@ class PropulsionsContent implements TeamContent
             ),
             Content(
                 'This one has no image',
-                'Just the title and description.\n\n',
+                'Just the title and description.\n\n\n\n\n',
             )
         ];
     }
@@ -32,9 +32,9 @@ class PropulsionsContent implements TeamContent
     format
     {
         return [
-            Format(2, 1, true, true),
-            Format(1, 2, false, false),
-            Format(1, 1, true, true),
+            Format(3, 2, true, true),
+            Format(2, 3, false, false),
+            Format(2, 3, false, true),
             Format(1, 1, true, false),
         ];
     }

@@ -35,9 +35,11 @@ class TeamContentPage extends StatelessWidget
                     c.title, 
                     fontSize: 36,
                     fontWeight: FontWeight.bold,
+                    textAlign: TextAlign.left,
                 );
                 SafeText description = SafeText(
-                    c.description
+                    c.description,
+                    textAlign: TextAlign.left,
                 );
 
                 if (c.image == null)
@@ -59,6 +61,7 @@ class TeamContentPage extends StatelessWidget
                 return _compose_column(title, description, image, 
                         f.use_alt_color);
             };
+        
         return SafeArea(
             child: CupertinoScrollbar(
                 child: ListView.separated(
@@ -69,7 +72,7 @@ class TeamContentPage extends StatelessWidget
                             color: Color.fromRGBO(0, 0, 0, 0.3),
                             height: 0,
                             thickness: 1,
-                        ),      
+                        )
                 )
             )
         );
@@ -97,16 +100,14 @@ class TeamContentPage extends StatelessWidget
             int flex_left, int flex_right, bool text_on_left, 
             bool use_alt_background)
     {
-        Widget text = Container(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                    title, 
-                    Separator(color: Colors.black, length: 48.0,),
-                    description
-                ],
-            ),
-            margin: EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
+        Widget text = Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+                title, 
+                Separator(color: Colors.black, length: 48.0,),
+                description
+            ],
         );
         
         return Container( 
@@ -118,15 +119,14 @@ class TeamContentPage extends StatelessWidget
                             flex: flex_left,
                             child: text_on_left? text : image
                         ),
+                        Container(width: 32,),
                         Expanded( 
                             flex: flex_right,
-                            child: Container(
-                                child: text_on_left? image : text,
-                            )
-                        )
+                            child: text_on_left? image : text,
+                        ),
                     ]
                 ),
-                margin: EdgeInsets.all(8.0)
+                margin: EdgeInsets.symmetric(horizontal: 32, vertical: 12)
             )
         );
     }
@@ -138,20 +138,22 @@ class TeamContentPage extends StatelessWidget
         return Container(
             color: use_alt_background? _alt_background : Colors.white,
             child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                     Container(
                         child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                                 title,
                                 Separator(color: Colors.black, length: 48.0,),
                                 description,
                             ],
                         ),
-                        margin: EdgeInsets.fromLTRB(4, 4, 4, 0),
+                        margin: EdgeInsets.fromLTRB(32, 4, 32, 0),
                     ),
                     Card(
                         child: image,
-                        margin: EdgeInsets.all(8.0)
+                        margin: EdgeInsets.all(12.0)
                     )
                 ],
             )
