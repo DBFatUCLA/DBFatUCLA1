@@ -49,6 +49,7 @@ class _DbfHomepage extends State<DbfHomepage>
         super.didChangeDependencies();
         for (var img in rotatingImages)
             precacheImage(img, context);
+        precacheImage(AssetImage('${path}/teamsbackground.jpg'), context);
     }
 
     @override void
@@ -72,6 +73,7 @@ class _DbfHomepage extends State<DbfHomepage>
                         key: ValueKey<int>(_image),
                         width: double.infinity,
                         height: double.infinity,
+                        gaplessPlayback: true,
                     )
                 ),
                 Container(
