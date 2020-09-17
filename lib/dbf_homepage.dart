@@ -42,6 +42,14 @@ class _DbfHomepage extends State<DbfHomepage>
             }
         );
     }
+    
+    @override void
+    didChangeDependencies()
+    {
+        super.didChangeDependencies();
+        for (var img in rotatingImages)
+            precacheImage(img, context);
+    }
 
     @override void
     dispose()

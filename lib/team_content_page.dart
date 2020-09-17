@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'team_content.dart';
+import 'image_placeholder.dart';
 import 'safetext.dart';
 import 'separator.dart';
 
@@ -51,8 +52,9 @@ class TeamContentPage extends StatelessWidget
                             f.use_alt_color);
                 }
                 
-                Image image = Image(
-                    image: AssetImage('${path}/${c.image}'),
+                Widget image = ImagePlaceholder(
+                    AssetImage('${path}/${c.image}'),
+                    CircularProgressIndicator(),
                     fit: BoxFit.fill
                 );
                 if (build_tablet)
