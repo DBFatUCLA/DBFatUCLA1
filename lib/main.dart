@@ -158,6 +158,7 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent>
     {
         return Scaffold(
             appBar: DbfAppBar(
+                current_page: _current_context_idx,
                 page_names: DBFWebsiteContent.page_names,
                 change_page: _change_page,
                 is_mobile: false,
@@ -177,6 +178,7 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent>
     {
         return Scaffold(
             appBar: DbfAppBar(
+                current_page: _current_context_idx,
                 page_names: DBFWebsiteContent.page_names,
                 change_page: _change_page,
                 is_mobile: true,

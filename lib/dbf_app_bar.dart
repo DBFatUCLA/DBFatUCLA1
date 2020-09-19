@@ -14,13 +14,17 @@ class DbfAppBar extends StatelessWidget implements PreferredSizeWidget
 {
     @override final Size preferredSize;
 
+    final int _current_page;
     final List<String> _page_names;
     final Function(int) _change_page;
     final bool _is_mobile;
 
-    DbfAppBar({Key key, List<String> page_names, Function(int) change_page, 
-            bool is_mobile: false})
+    DbfAppBar({Key key, @required int current_page, 
+            @required List<String> page_names, 
+            @required Function(int) change_page, 
+            bool is_mobile=false})
         : preferredSize = const Size(double.infinity, 75.0),
+          _current_page = current_page,
           _page_names = page_names,
           _change_page = change_page,
           _is_mobile = is_mobile,
@@ -67,6 +71,13 @@ class DbfAppBar extends StatelessWidget implements PreferredSizeWidget
                         ]
                     ),
                     padding: EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
+                    decoration: (page_idx == _current_page)
+                        ? BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(width: 2, color: textColor)
+                            ),
+                        )
+                        : null,
                 ),
                 onPressed: () => _change_page(page_idx),
             ),
