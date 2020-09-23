@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Separator.dart';
+import 'separator.dart';
 
 /**
  * Class that exists in 2 states.
