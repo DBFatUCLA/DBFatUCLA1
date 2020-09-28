@@ -24,7 +24,7 @@ class _DbfHomepage extends State<DbfHomepage>
 {
     Timer _timer;
     static int _image = 0;
-
+    
     @override void
     initState()
     {
@@ -41,6 +41,12 @@ class _DbfHomepage extends State<DbfHomepage>
                 });
             }
         );
+    }
+    
+    @override void
+    didChangeDependencies()
+    {
+        super.didChangeDependencies();
         for (var img in rotatingImages)
             precacheImage(img, context);
         precacheImage(AssetImage('${path}/teamsbackground.jpg'), context);
