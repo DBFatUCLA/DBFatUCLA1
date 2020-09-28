@@ -12,17 +12,17 @@ class PropulsionsContent implements TeamContent
             Content( 
                 'Propulsions',
                 'This is the format which I have code to duplicate.',
-                'img0.jpg'
+                'img1.jpg'
             ),
             Content( 
                 'Reversed so Image is on left.',
 '''Here is a really loooooooooooong line that has lots of content. So much content. You wouldn't believe the amount of content...\n\n\n\n\n\n\n\n\n\n\n\n\n\nsurprise''',
-                'img1.png'
+                'img2.jpg'
             ),
             Content(
                 'Mobile?',
                 'Just change the browser size!',
-                'img2.jpg'
+                'img3.jpg'
             ),
             Content(
                 'This one has no image',

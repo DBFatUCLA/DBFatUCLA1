@@ -4,9 +4,9 @@ import 'dart:async';
 const String path = './assets/images';
 const int timerPeriod = 5;
 const List<AssetImage> rotatingImages = [
-    AssetImage('${path}/img0.jpg'),
-    AssetImage('${path}/img1.png'),
-    AssetImage('${path}/img2.jpg')
+    AssetImage('${path}/img1.jpg'),
+    AssetImage('${path}/img2.jpg'),
+    AssetImage('${path}/img3.jpg'),
 ];
 
 /**
