@@ -1,4 +1,4 @@
-# dbf_v10
+# DBF at UCLA
 
 A first attempt a DBF website.
 
@@ -14,6 +14,9 @@ running `flutter run` then choosing from the options flutter provides.
     
 For production, building the website is done with `flutter build web --release`, 
 which will place the files in the `/build/web` directory.
+    
+To formally publish these changes, copy the files from `/build/web` into 
+`/docs` then push the changes.
     
 **Note:** Flutter will often cache builds within a build cache which can be 
 cleaned with `flutter clean`.
