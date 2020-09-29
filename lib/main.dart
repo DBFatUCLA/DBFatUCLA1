@@ -13,192 +13,149 @@ import 'manufacturing_content.dart';
 
 void main() => runApp(DBFWebsite());
 
-class DBFWebsite extends StatelessWidget
-{
-    static const website_title = 'DBF at UCLA';
+class DBFWebsite extends StatelessWidget {
+  static const website_title = 'DBF at UCLA';
 
-    @override Widget
-    build(BuildContext context)
-    {
-        return MaterialApp(
-            title: DBFWebsite.website_title,
-            theme: ThemeData(
-                primarySwatch: Colors.blue,
-                visualDensity: VisualDensity.adaptivePlatformDensity,
-            ),
-            home: DBFWebsiteContent()
-        );
-    }
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: DBFWebsite.website_title,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: DBFWebsiteContent(),
+    );
+  }
 }
 
-class DBFWebsiteContent extends StatefulWidget
-{
-    static const List<String> page_names = ['DBF @ UCLA', 'About', 'Teams'];
-    static const List<String> page_names_drawer = ['Home', 'About', 'Teams'];
+class DBFWebsiteContent extends StatefulWidget {
+  static const List<String> page_names = ['DBF @ UCLA', 'About', 'Teams'];
+  static const List<String> page_names_drawer = ['Home', 'About', 'Teams'];
 
-    @override State<StatefulWidget>
-    createState() => _DBFWebsiteContent();
+  @override
+  State<StatefulWidget> createState() => _DBFWebsiteContent();
 }
 
-class _DBFWebsiteContent extends State<DBFWebsiteContent>
-{
-    List _pages;
-    Widget _content;
-    int _last_content_idx;
-    int _current_context_idx;
+class _DBFWebsiteContent extends State<DBFWebsiteContent> {
+  List _pages;
+  Widget _content;
+  int _lastContentIdx;
+  int _currentContentIdx;
 
-    _DBFWebsiteContent()
-        : _content = DbfHomepage(),
-          _last_content_idx = 0,
-          _current_context_idx = 0
-    {
-        _pages = [
-            (() => DbfHomepage()),
-            (() => DbfAboutPage()),
-            (() => DbfAllTeamsPage((idx) => _change_page(idx + 3))),
-            (() => TeamContentOverlay(PropulsionsContent(), 
-                    () => _change_page(2))),
-            (() => TeamContentOverlay(ManufacturingContent(), 
-                    () => _change_page(2)))
-        ];
+  _DBFWebsiteContent()
+      : _content = DbfHomepage(),
+        _lastContentIdx = 0,
+        _currentContentIdx = 0 {
+    _pages = [
+      (() => DbfHomepage()),
+      (() => DbfAboutPage()),
+      (() => DbfAllTeamsPage((idx) => _changePage(idx + 3))),
+      (() => TeamContentOverlay(PropulsionsContent(), () => _changePage(2))),
+      (() => TeamContentOverlay(ManufacturingContent(), () => _changePage(2))),
+    ];
+  }
+
+  void _changePage(int idx) {
+    if (_currentContentIdx != idx && idx < _pages.length) {
+      setState(() {
+        _lastContentIdx = _currentContentIdx;
+        _currentContentIdx = idx;
+        _content = _pages[idx]();
+      });
     }
+  }
 
-    void
-    _change_page(int idx)
-    {
-        if (_current_context_idx != idx && idx < _pages.length)
-        {
-            setState(()
-            {
-                _last_content_idx = _current_context_idx;
-                _current_context_idx = idx;
-                _content = _pages[idx]();
-            });
+  Widget Function(Widget child, Animation<double> animation)
+      get _transitionFunction {
+    if (_lastContentIdx < _currentContentIdx) {
+      return (Widget child, Animation<double> animation) {
+        if (animation.status == AnimationStatus.dismissed) {
+          return SlideTransition(
+            child: child,
+            position: Tween<Offset>(begin: Offset(1, 0), end: Offset.zero)
+                .animate(animation),
+          );
+        } else if (animation.status == AnimationStatus.completed) {
+          return SlideTransition(
+            child: child,
+            position: Tween<Offset>(begin: Offset(-1, 0), end: Offset.zero)
+                .animate(animation),
+          );
         }
-    }
-  
-    Widget Function(Widget child, Animation<double> animation) get
-    _transition_function
-    {
-        if (_last_content_idx < _current_context_idx)
-        {
-            return (Widget child, Animation<double> animation)
-            {
-                if (animation.status == AnimationStatus.dismissed)
-                {
-                    return SlideTransition(
-                        child: child,
-                        position: Tween<Offset>(
-                            begin: Offset(1, 0),
-                            end: Offset.zero
-                        ).animate(animation)
-                    );
-                }
-                else if (animation.status == AnimationStatus.completed)
-                {
-                    return SlideTransition(
-                        child: child,
-                        position: Tween<Offset>(
-                            begin: Offset(-1, 0),
-                            end: Offset.zero
-                        ).animate(animation)
-                    );
-                }
-                return SlideTransition( 
-                    child: child,
-                    position: Tween<Offset>(
-                        begin: Offset.zero, 
-                        end: Offset.zero
-                    ).animate(animation)
-                );
-            };
-        }
-        else
-        {
-            return (Widget child, Animation<double> animation)
-            {
-                if (animation.status == AnimationStatus.dismissed)
-                {
-                    return SlideTransition(
-                        child: child,
-                        position: Tween<Offset>(
-                            begin: Offset(-1, 0),
-                            end: Offset.zero
-                        ).animate(animation)
-                    );
-                }
-                else if (animation.status == AnimationStatus.completed)
-                {
-                    return SlideTransition(
-                        child: child,
-                        position: Tween<Offset>(
-                            begin: Offset(1, 0),
-                            end: Offset.zero
-                        ).animate(animation)
-                    );
-                }
-                return SlideTransition( 
-                    child: child,
-                    position: Tween<Offset>(
-                        begin: Offset.zero, 
-                        end: Offset.zero
-                    ).animate(animation)
-                );
-            };
-        }
-    }
-
-    @override Widget
-    build(BuildContext context)
-    {
-        if (MediaQuery.of(context).size.width > 600)
-            return _build_tablet(context);
-        return _build_mobile(context);
-    }
-
-    Widget
-    _build_tablet(BuildContext context)
-    {
-        return Scaffold(
-            appBar: DbfAppBar(
-                current_page: _current_context_idx,
-                page_names: DBFWebsiteContent.page_names,
-                change_page: _change_page,
-                is_mobile: false,
-            ),
-            body: AnimatedSwitcher(
-                child: _content,
-                duration: const Duration(milliseconds: 750),
-                switchInCurve: Curves.fastOutSlowIn,
-                switchOutCurve: Curves.fastOutSlowIn.flipped,
-                transitionBuilder: _transition_function
-            )
+        return SlideTransition(
+          child: child,
+          position: Tween<Offset>(begin: Offset.zero, end: Offset.zero)
+              .animate(animation),
         );
-    }
-
-    Widget
-    _build_mobile(BuildContext context)
-    {
-        return Scaffold(
-            appBar: DbfAppBar(
-                current_page: _current_context_idx,
-                page_names: DBFWebsiteContent.page_names,
-                change_page: _change_page,
-                is_mobile: true,
-            ),
-            body: AnimatedSwitcher(
-                child: _content,
-                duration: const Duration(milliseconds: 750),
-                switchInCurve: Curves.fastOutSlowIn,
-                switchOutCurve: Curves.fastOutSlowIn.flipped,
-                transitionBuilder: _transition_function
-            ),
-            drawer: DbfDrawer(
-                page_names: DBFWebsiteContent.page_names_drawer,
-                change_page: _change_page,
-            ),
+      };
+    } else {
+      return (Widget child, Animation<double> animation) {
+        if (animation.status == AnimationStatus.dismissed) {
+          return SlideTransition(
+            child: child,
+            position: Tween<Offset>(begin: Offset(-1, 0), end: Offset.zero)
+                .animate(animation),
+          );
+        } else if (animation.status == AnimationStatus.completed) {
+          return SlideTransition(
+            child: child,
+            position: Tween<Offset>(begin: Offset(1, 0), end: Offset.zero)
+                .animate(animation),
+          );
+        }
+        return SlideTransition(
+          child: child,
+          position: Tween<Offset>(begin: Offset.zero, end: Offset.zero)
+              .animate(animation),
         );
+      };
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (MediaQuery.of(context).size.width > 600) return _buildTablet(context);
+    return _buildMobile(context);
+  }
+
+  Widget _buildTablet(BuildContext context) {
+    return Scaffold(
+      appBar: DbfAppBar(
+        currentPage: _currentContentIdx,
+        pageNames: DBFWebsiteContent.page_names,
+        changePage: _changePage,
+        isMobile: false,
+      ),
+      body: AnimatedSwitcher(
+        child: _content,
+        duration: const Duration(milliseconds: 750),
+        switchInCurve: Curves.fastOutSlowIn,
+        switchOutCurve: Curves.fastOutSlowIn.flipped,
+        transitionBuilder: _transitionFunction,
+      ),
+    );
+  }
+
+  Widget _buildMobile(BuildContext context) {
+    return Scaffold(
+      appBar: DbfAppBar(
+        currentPage: _currentContentIdx,
+        pageNames: DBFWebsiteContent.page_names,
+        changePage: _changePage,
+        isMobile: true,
+      ),
+      body: AnimatedSwitcher(
+        child: _content,
+        duration: const Duration(milliseconds: 750),
+        switchInCurve: Curves.fastOutSlowIn,
+        switchOutCurve: Curves.fastOutSlowIn.flipped,
+        transitionBuilder: _transitionFunction,
+      ),
+      drawer: DbfDrawer(
+        pageNames: DBFWebsiteContent.page_names_drawer,
+        changePage: _changePage,
+      ),
+    );
+  }
 }
-
-
