@@ -9,6 +9,7 @@ import 'dbf_about_page.dart';
 import 'dbf_all_teams_page.dart';
 import 'team_content_overlay.dart';
 import 'propulsions_content.dart';
+import 'manufacturing_content.dart';
 
 void main() => runApp(DBFWebsite());
 
