@@ -56,6 +56,8 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent>
             (() => DbfAboutPage()),
             (() => DbfAllTeamsPage((idx) => _change_page(idx + 3))),
             (() => TeamContentOverlay(PropulsionsContent(), 
+                    () => _change_page(2))),
+            (() => TeamContentOverlay(ManufacturingContent(), 
                     () => _change_page(2)))
         ];
     }
