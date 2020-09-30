@@ -7,17 +7,17 @@ class ManufacturingContent implements TeamContent {
     return [
       Content(
         'Manufacturing',
-        ' ',
+        'This is the format which I have code to duplicate.',
         'img1.jpg',
       ),
       Content(
-        'Manufacturing.',
-        'The Manufacturing team is responsible for building the entire aircraft from the ground up. We do parts fabrication and assembly based on designs from the CAD team using carbon fiber, 3D printed plastics, wood, and a variety of other materials.',
+        'Reversed so Image is on left.',
+        '''Here is a really loooooooooooong line that has lots of content. So much content. You wouldn't believe the amount of content...\n\n\n\n\n\n\n\n\n\n\n\n\n\nsurprise''',
         'img2.jpg',
       ),
       Content(
-        'Who participates?',
-        'Both manufacturing subteam members and members from other subteams help to manufacture prototypes for testing and the final plane for competition. Interested members are encouraged to join the manufacturing subteam to learn more about manufacturing processes before build days.',
+        'Mobile?',
+        'Just change the browser size!',
         'img3.jpg',
       ),
       Content(
