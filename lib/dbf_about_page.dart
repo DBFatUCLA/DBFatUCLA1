@@ -41,7 +41,8 @@ class DbfAboutPage extends StatelessWidget {
         padding: EdgeInsets.fromLTRB(0, 15.0, 0, 15.0),
         children: <Widget>[
           _composeText('About Us', aboutInfo),
-          _composeText('Get Involved!', 'Join the Slack at ...'),
+          _composeText('Upcoming Events','Come to our kickoff meeting on October 7th at 6pm!'),
+          _composeText('Get Involved!', 'Meanwhile, fill out our interest form to receive updates: https://forms.gle/uuLZALgquZ5SLvZW9.'),
         ],
       ),
     );

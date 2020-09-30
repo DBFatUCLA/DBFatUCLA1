@@ -6,23 +6,23 @@ class PropulsionsContent implements TeamContent {
   List<Content> get content {
     return [
       Content(
-        'Propulsions',
-        'This is the format which I have code to duplicate.',
+        'Propulsions and Electronics',
+        ' ',
         'img1.jpg',
       ),
       Content(
-        'Reversed so Image is on left.',
-        '''Here is a really loooooooooooong line that has lots of content. So much content. You wouldn't believe the amount of content...\n\n\n\n\n\n\n\n\n\n\n\n\n\nsurprise''',
+        'Development Responsibilities:',
+        'The Propulsion & Electronics team is responsible for selecting and testing the electric propulsion system components for the aircraft. We also set up any other electronics for the aircraft, such as servo actuators and the receiver/transmitter.',
         'img2.jpg',
       ),
       Content(
-        'Mobile?',
-        'Just change the browser size!',
+        'Flight Day Responsibilities',
+        'Before flight, the propulsions and electronics team selects the appropriate propellor and tests the response of the servos that power the control surfaces (flaps, ailerons, elevator and rudder) and other mechanisms, such as our banner deployment mechanism last year.',
         'img3.jpg',
       ),
       Content(
-        'This one has no image',
-        'Just the title and description.\n\n\n\n\n',
+        'Testing Methods:',
+        'We rely on a mixture of theoretical and practical methods to test the propulsion systems, including static thrust testing in the lab.\n\n\n\n\n',
       )
     ];
   }
