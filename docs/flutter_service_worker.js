@@ -3,21 +3,22 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "93c9d0c6e3eb9424b7b8ab8a060c3d4e",
+  "favicon.png": "4d653d8b4b207bd44081533af742ef68",
 "assets/assets/images/img1.jpg": "2aa29c8b1864bfac0fb04a74e2581eb0",
 "assets/assets/images/img2.jpg": "c99642d9ab04673e7e27b7952e42729c",
-"assets/assets/images/img3.jpg": "75fa2892bbbd15d42b057f8e57b8d05c",
-"assets/assets/images/logo.png": "4d653d8b4b207bd44081533af742ef68",
 "assets/assets/images/teamsbackground.jpg": "15c7a6948382a50ff787ca1595f76ead",
+"assets/assets/images/logo.png": "4d653d8b4b207bd44081533af742ef68",
+"assets/assets/images/img3.jpg": "75fa2892bbbd15d42b057f8e57b8d05c",
+"assets/AssetManifest.json": "93c9d0c6e3eb9424b7b8ab8a060c3d4e",
+"assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
+"assets/NOTICES": "eb73d6e71cfb1262e3b6145f306954d5",
 "assets/FontManifest.json": "7b2a36307916a9721811788013e65289",
-"assets/fonts/MaterialIcons-Regular.otf": "a68d2a28c526b3b070aefca4bac93d25",
-"assets/NOTICES": "839103041e460255f5642d3ed2ff1437",
-"favicon.png": "4d653d8b4b207bd44081533af742ef68",
+"main.dart.js": "21c1f80445c2c6d0447a2c5def9e0f5e",
+"index.html": "9faabf64d29ac58b5ce0184622f80fda",
+"/": "9faabf64d29ac58b5ce0184622f80fda",
 "icons/favicon.png": "4d653d8b4b207bd44081533af742ef68",
-"index.html": "4aa6dd362fbaf9e15d4df16a347d0034",
-"/": "4aa6dd362fbaf9e15d4df16a347d0034",
-"main.dart.js": "815bd3dbc22a9fcbdd05a5cb057bd009",
-"manifest.json": "bb7e10c908eb2f19ad5e043d27395656"
+"manifest.json": "bb7e10c908eb2f19ad5e043d27395656",
+"version.json": "4dc6a6016c42abcf11ce77dc07b15d17"
 };
 
 // The application shell files that are downloaded before a service worker can
@@ -31,6 +32,7 @@ const CORE = [
 "assets/FontManifest.json"];
 // During install, the TEMP cache is populated with the application shell files.
 self.addEventListener("install", (event) => {
+  self.skipWaiting();
   return event.waitUntil(
     caches.open(TEMP).then((cache) => {
       return cache.addAll(
@@ -99,6 +101,9 @@ self.addEventListener("activate", function(event) {
 // The fetch handler redirects requests for RESOURCE files to the service
 // worker cache.
 self.addEventListener("fetch", (event) => {
+  if (event.request.method !== 'GET') {
+    return;
+  }
   var origin = self.location.origin;
   var key = event.request.url.substring(origin.length + 1);
   // Redirect URLs to the index.html
@@ -108,9 +113,10 @@ self.addEventListener("fetch", (event) => {
   if (event.request.url == origin || event.request.url.startsWith(origin + '/#') || key == '') {
     key = '/';
   }
-  // If the URL is not the RESOURCE list, skip the cache.
+  // If the URL is not the RESOURCE list then return to signal that the
+  // browser should take over.
   if (!RESOURCES[key]) {
-    return event.respondWith(fetch(event.request));
+    return;
   }
   // If the URL is the index.html, perform an online-first request.
   if (key == '/') {
@@ -134,10 +140,12 @@ self.addEventListener('message', (event) => {
   // SkipWaiting can be used to immediately activate a waiting service worker.
   // This will also require a page refresh triggered by the main worker.
   if (event.data === 'skipWaiting') {
-    return self.skipWaiting();
+    self.skipWaiting();
+    return;
   }
-  if (event.message === 'downloadOffline') {
+  if (event.data === 'downloadOffline') {
     downloadOffline();
+    return;
   }
 });
 

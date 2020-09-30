@@ -1,6 +1,10 @@
-import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
+
+import 'package:url_launcher/url_launcher.dart';
+
+import 'package:linkify/linkify.dart';
 
 import 'safetext.dart';
 import 'button_with_dropdown.dart';
@@ -9,26 +13,38 @@ import 'button_with_dropdown.dart';
 ///
 class DbfAboutPage extends StatelessWidget {
   const DbfAboutPage({Key key}) : super(key: key);
+  static const titleStyle = TextStyle(
+    color: Colors.black,
+    fontFamily: SafeText.serif,
+    fontSize: 36,
+    fontWeight: FontWeight.bold,
+  );
+  static const descriptionStyle = TextStyle(
+    color: Colors.black,
+    fontFamily: SafeText.serif,
+    fontSize: 18,
+  );
 
-  static Widget _composeText(String title, String description,
-      {Color color = Colors.black, String fontFamily = SafeText.serif}) {
-    TextStyle titleStyle = TextStyle(
-        color: color,
-        fontFamily: fontFamily,
-        fontSize: 36,
-        fontWeight: FontWeight.bold);
-    TextStyle descriptionStyle = TextStyle(
-      color: color,
-      fontFamily: fontFamily,
-      fontSize: 18,
-    );
+  static Widget _composeText(String title, String description, {String link}) {
     return Container(
       padding: EdgeInsets.fromLTRB(0, 15.0, 0, 15.0),
       child: ButtonWithDropdown(
-        name: title,
-        description: description,
-        nameStyle: titleStyle,
-        descriptionStyle: descriptionStyle,
+        name: Text(title, style: titleStyle),
+        description: (link == null)
+            ? SelectableText(
+                description,
+                style: descriptionStyle,
+              )
+            : SelectableLinkify(
+                text: description,
+                style: descriptionStyle,
+                options: LinkifyOptions(humanize: false),
+                onOpen: (link) async {
+                  if (await canLaunch(link.url)) {
+                    await launch(link.url);
+                  }
+                },
+              ),
       ),
     );
   }
@@ -41,8 +57,11 @@ class DbfAboutPage extends StatelessWidget {
         padding: EdgeInsets.fromLTRB(0, 15.0, 0, 15.0),
         children: <Widget>[
           _composeText('About Us', aboutInfo),
-          _composeText('Upcoming Events','Come to our kickoff meeting on October 7th at 6pm!'),
-          _composeText('Get Involved!', 'Meanwhile, fill out our interest form to receive updates: https://forms.gle/uuLZALgquZ5SLvZW9.'),
+          _composeText('Upcoming Events',
+              'Come to our kickoff meeting on October 7th at 6pm!'),
+          _composeText('Get Involved!',
+              'Meanwhile, fill out our interest form to receive updates: https://forms.gle/uuLZALgquZ5SLvZW9.',
+              link: 'https://forms.gle/uuLZALgquZ5SLvZW9'),
         ],
       ),
     );

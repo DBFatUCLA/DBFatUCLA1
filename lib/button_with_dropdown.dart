@@ -9,16 +9,14 @@ import 'separator.dart';
 /// Click the button to swap between states.
 ///
 class ButtonWithDropdown extends StatefulWidget {
-  final String name;
-  final String description;
-  final TextStyle nameStyle;
-  final TextStyle descriptionStyle;
+  final Widget name;
+  final Widget description;
+  final Color color;
 
   ButtonWithDropdown(
       {@required this.name,
       @required this.description,
-      this.nameStyle,
-      this.descriptionStyle,
+      this.color = Colors.black,
       Key key})
       : super(key: key);
 
@@ -40,7 +38,7 @@ class _ButtonWithDropdown extends State<ButtonWithDropdown> {
           child: Row(children: <Widget>[
             if (_retracted) Icon(Icons.expand_more),
             if (!_retracted) Icon(Icons.expand_less),
-            Text(widget.name, style: widget.nameStyle),
+            widget.name
           ]),
           onPressed: () => setState(() {
             _retracted = !_retracted;
@@ -49,17 +47,14 @@ class _ButtonWithDropdown extends State<ButtonWithDropdown> {
         Container(
           padding: EdgeInsets.fromLTRB(35.0, 0, 0, 0),
           child: Separator(
-            color: widget.nameStyle.color,
+            color: widget.color,
             length: 48.0,
           ),
         ),
         if (!_retracted)
           Container(
             padding: EdgeInsets.fromLTRB(35.0, 0, 35.0, 0),
-            child: SelectableText(
-              widget.description,
-              style: widget.descriptionStyle,
-            ),
+            child: widget.description,
           ),
       ],
     );
