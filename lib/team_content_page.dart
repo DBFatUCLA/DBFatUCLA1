@@ -32,7 +32,7 @@ class TeamContentPage extends StatelessWidget {
       Format f = _content.format[idx];
       SafeText title = SafeText(
         c.title,
-        fontSize: 36,
+        fontSize: 30,
         fontWeight: FontWeight.bold,
         textAlign: TextAlign.left,
       );

@@ -33,13 +33,6 @@ class _DbfHomepage extends State<DbfHomepage> {
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    for (var img in rotatingImages) precacheImage(img, context);
-    precacheImage(AssetImage('$path/teamsbackground.jpg'), context);
-  }
-
-  @override
   void dispose() {
     _timer.cancel();
     _timer = null;

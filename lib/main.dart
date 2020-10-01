@@ -56,6 +56,13 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent> {
     ];
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    for (var img in rotatingImages) precacheImage(img, context);
+    precacheImage(AssetImage('$path/teamsbackground.jpg'), context);
+  }
+
   void _changePage(int idx) {
     if (_currentContentIdx != idx && idx < _pages.length) {
       setState(() {
