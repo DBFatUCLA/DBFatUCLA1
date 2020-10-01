@@ -29227,7 +29227,7 @@ $R:2,
 $S:68}
 F.Mv.prototype={
 gFa:function(){return"Manufacturing"},
-gu7:function(a){return H.d([new M.eB("Manufacturing","This is the format which I have code to duplicate.","img1.jpg"),new M.eB("Reversed so Image is on left.","Here is a really loooooooooooong line that has lots of content. So much content. You wouldn't believe the amount of content...\n\n\n\n\n\n\n\n\n\n\n\n\n\nsurprise","img2.jpg"),new M.eB("Mobile?","Just change the browser size!","img3.jpg"),new M.eB("This one has no image","Just the title and description.\n\n\n\n\n",null)],t.c6)},
+gu7:function(a){return H.d([new M.eB("Manufacturing"," ","img1.jpg"),new M.eB("Manufacturing.","The Manufacturing team is responsible for building the entire aircraft from the ground up. We do parts fabrication and assembly based on designs from the CAD team using carbon fiber, 3D printed plastics, wood, and a variety of other materials.","img2.jpg"),new M.eB("Who participates?","Both manufacturing subteam members and members from other subteams help to manufacture prototypes for testing and the final plane for competition. Interested members are encouraged to join the manufacturing subteam to learn more about manufacturing processes before build days.","img3.jpg"),new M.eB("This one has no image","Just the title and description.\n\n\n\n\n",null)],t.c6)},
 gDE:function(){return H.d([new M.eJ(3,2,!0,!0),new M.eJ(2,3,!1,!1),new M.eJ(2,3,!1,!0),new M.eJ(1,1,!0,!1)],t.AU)}}
 Y.O7.prototype={
 gFa:function(){return"Propulsions"},
