@@ -1,52 +1,86 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
 
 import 'package:url_launcher/url_launcher.dart';
-
-import 'package:linkify/linkify.dart';
 
 import 'safetext.dart';
 import 'button_with_dropdown.dart';
 
+class HyperLink {
+  final String _text;
+  final String _link;
+
+  HyperLink(this._text, [this._link]);
+
+  String get text => _text;
+  bool get isHyperLink => _link != null;
+  Future<void> get openHyperLink async {
+    if (await canLaunch(_link)) await launch(_link);
+  }
+}
+
 /// About page that consists of ButtonWithDropdowns.
 ///
-class DbfAboutPage extends StatelessWidget {
-  const DbfAboutPage({Key key}) : super(key: key);
+class DbfAboutPage extends StatefulWidget {
+  DbfAboutPage({Key key}) : super(key: key);
+
+  @override
+  _DbfAboutPageState createState() => _DbfAboutPageState();
+}
+
+class _DbfAboutPageState extends State<DbfAboutPage> {
   static const titleStyle = TextStyle(
     color: Colors.black,
     fontFamily: SafeText.serif,
     fontSize: 36,
     fontWeight: FontWeight.bold,
   );
-  static const descriptionStyle = TextStyle(
-    color: Colors.black,
-    fontFamily: SafeText.serif,
-    fontSize: 18,
-  );
 
-  static Widget _composeText(String title, String description, {String link}) {
+  static TextStyle _descriptionStyle(bool link) {
+    return TextStyle(
+      color: link ? Colors.blue : Colors.black,
+      fontFamily: SafeText.serif,
+      fontSize: 18,
+    );
+  }
+
+  List<TapGestureRecognizer> _disposables;
+
+  _DbfAboutPageState() : _disposables = [];
+
+  Widget _composeText(String title, List<HyperLink> description) {
+    List<TextSpan> combinedDescription = [];
+    for (HyperLink e in description) {
+      var linkOpener;
+      if (e.isHyperLink) {
+        linkOpener = TapGestureRecognizer()
+          ..onTap = () async {
+            await e.openHyperLink;
+          };
+        _disposables.add(linkOpener);
+      }
+      combinedDescription.add(TextSpan(
+        text: e._text,
+        style: _descriptionStyle(e.isHyperLink),
+        recognizer: linkOpener,
+      ));
+    }
     return Container(
       padding: EdgeInsets.fromLTRB(0, 15.0, 0, 15.0),
       child: ButtonWithDropdown(
         name: Text(title, style: titleStyle),
-        description: (link == null)
-            ? SelectableText(
-                description,
-                style: descriptionStyle,
-              )
-            : SelectableLinkify(
-                text: description,
-                style: descriptionStyle,
-                options: LinkifyOptions(humanize: false),
-                onOpen: (link) async {
-                  if (await canLaunch(link.url)) {
-                    await launch(link.url);
-                  }
-                },
-              ),
+        description: SelectableText.rich(
+          TextSpan(children: combinedDescription),
+        ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    for (var d in _disposables) d.dispose();
+    super.dispose();
   }
 
   @override
@@ -56,12 +90,15 @@ class DbfAboutPage extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.fromLTRB(0, 15.0, 0, 15.0),
         children: <Widget>[
-          _composeText('About Us', aboutInfo),
-          _composeText('Upcoming Events',
-              'Come to our kickoff meeting on October 7th at 6pm!'),
-          _composeText('Get Involved!',
-              'Meanwhile, fill out our interest form to receive updates: https://forms.gle/uuLZALgquZ5SLvZW9.',
-              link: 'https://forms.gle/uuLZALgquZ5SLvZW9'),
+          _composeText('About Us', [HyperLink(aboutInfo)]),
+          _composeText('Upcoming Events', [
+            HyperLink('Come to our kickoff meeting on October 7th at 6pm!'),
+          ]),
+          _composeText('Get Involved!', [
+            HyperLink('Meanwhile, fill out our '),
+            HyperLink('interest form', 'https://forms.gle/uuLZALgquZ5SLvZW9'),
+            HyperLink(' to receive updates!')
+          ])
         ],
       ),
     );
