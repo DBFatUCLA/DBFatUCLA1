@@ -48,7 +48,7 @@ class DbfAboutPage extends StatelessWidget {
       hyperlinks.add(
         FlatButton(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(18),
             side: BorderSide(color: Colors.blue),
           ),
           color: Colors.white,
@@ -60,7 +60,7 @@ class DbfAboutPage extends StatelessWidget {
             child: Text(
               link.text,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
                 color: Colors.blue,
                 fontFamily: 'Arial',
               ),
@@ -68,22 +68,22 @@ class DbfAboutPage extends StatelessWidget {
           ),
         ),
       );
-      hyperlinks.add(Container(
-        width: 8,
-      ));
     }
     return Container(
       padding: EdgeInsets.fromLTRB(0, 15.0, 0, 15.0),
       child: ButtonWithDropdown(
           name: Text(title, style: titleStyle),
           description: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SelectableText(
                 description,
                 style: _descriptionStyle,
               ),
               Container(height: 16),
-              Row(
+              Wrap(
+                spacing: 8,
+                runSpacing: 4,
                 children: hyperlinks,
               )
             ],
@@ -119,4 +119,4 @@ Through the annual design process and other projects, DBF members learn new skil
 const String getInvolvedInfo =
     """Meanwhile, fill out our interest form to receive updates!
     
-Design Build Fly exists is under UCLA's American Institute of Aeronautics and Astronautics (AIAA) branch. If you would like to get involved with our parent organization or find out about other clubs under AIAA, a link to their website can be found below.""";
+Design Build Fly exists under UCLA's American Institute of Aeronautics and Astronautics (AIAA) branch. If you would like to get involved with our parent organization or find out about other clubs under AIAA, a link to their website can be found below.""";
