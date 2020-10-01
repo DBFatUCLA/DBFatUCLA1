@@ -56,7 +56,7 @@ class DbfAboutPage extends StatelessWidget {
             if (await canLaunch(link.link)) launch(link.link);
           },
           child: Container(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(4.0),
             child: Text(
               link.text,
               style: TextStyle(
@@ -80,7 +80,7 @@ class DbfAboutPage extends StatelessWidget {
                 description,
                 style: _descriptionStyle,
               ),
-              Container(height: 16),
+              Container(height: 8),
               Wrap(
                 spacing: 8,
                 runSpacing: 4,
