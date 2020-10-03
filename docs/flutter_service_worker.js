@@ -28,9 +28,9 @@ const RESOURCES = {
 "assets/NOTICES": "7324e24f097ff6adcb495acffa1e152c",
 "favicon.png": "4d653d8b4b207bd44081533af742ef68",
 "icons/favicon.png": "4d653d8b4b207bd44081533af742ef68",
-"index.html": "a38bf22a752892fc15c5de2849f94c81",
-"/": "a38bf22a752892fc15c5de2849f94c81",
-"main.dart.js": "a70e2fc2f5bb81dca23bc72be69ac20e",
+"index.html": "ce768d118409cd6173d025cc19260efa",
+"/": "ce768d118409cd6173d025cc19260efa",
+"main.dart.js": "8308ab091593142918dd84d67248dfb8",
 "manifest.json": "bb7e10c908eb2f19ad5e043d27395656"
 };
 

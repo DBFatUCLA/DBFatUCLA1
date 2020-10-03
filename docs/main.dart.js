@@ -28525,7 +28525,7 @@ gjd:function(a){return H.d([new M.c8("Manufacturing Subteam"," ","manufacture2.j
 glu:function(){return H.d([new M.c9(3,2,!0,!0),new M.c9(2,3,!1,!1),new M.c9(2,3,!1,!0)],t.AU)}}
 Y.NW.prototype={
 gm2:function(){return"Propulsions"},
-gjd:function(a){return H.d([new M.c8("Propulsions and Electronics Subteam"," ","PropElect1.jpg"),new M.c8("Development Responsibilities","The Propulsion & Electronics team is responsible for selecting and testing the electric propulsion system components for the aircraft. We also set up any other electronics for the aircraft, such as servo actuators and the receiver/transmitter.","propelect.png"),new M.c8("Flight Day Responsibilities",u.f,"spruceFly.jpg"),new M.c8("Testing Methods","We rely on a mixture of theoretical and practical methods to test the propulsion systems, including static thrust testing in the lab. The propulsion and electronics subteam relies on software such as MATLAB and eCalc to aid with the design and implementation of the propulsion and electornics systems.\n",null)],t.c6)},
+gjd:function(a){return H.d([new M.c8("Propulsions and Electronics Subteam"," ","PropElect1.jpg"),new M.c8("Development Responsibilities","The Propulsion & Electronics team is responsible for selecting and testing the electric propulsion system components for the aircraft. We also set up any other electronics for the aircraft, such as servo actuators and the receiver/transmitter.","propelect.png"),new M.c8("Flight Day Responsibilities",u.f,"spruceFly.JPG"),new M.c8("Testing Methods","We rely on a mixture of theoretical and practical methods to test the propulsion systems, including static thrust testing in the lab. The propulsion and electronics subteam relies on software such as MATLAB and eCalc to aid with the design and implementation of the propulsion and electornics systems.\n",null)],t.c6)},
 glu:function(){return H.d([new M.c9(3,2,!0,!0),new M.c9(2,3,!1,!1),new M.c9(2,3,!1,!0),new M.c9(1,1,!0,!1)],t.AU)}}
 O.Ap.prototype={}
 O.ks.prototype={
@@ -28533,7 +28533,7 @@ H:function(a,b){var s=null
 return M.aS(s,s,this.c,s,s,2,new V.at(0,8,0,8),s,this.d)}}
 A.RT.prototype={
 gm2:function(){return"Structures"},
-gjd:function(a){return H.d([new M.c8("Structures Subteam"," ","struct1.png"),new M.c8("Responsibilities","The Structures team is involved with designing and testing structural components of the airplane. We determine structural capabilities through calculations and computer modeling.","landing1.JPG"),new M.c8("Software:","The team uses software such as ANSYS and Solidworks to perform analysis of the structural capabilities of the plane based on expected stresses and strains associated with takeoff, flight, and landing.","struct2.png")],t.c6)},
+gjd:function(a){return H.d([new M.c8("Structures Subteam"," ","struct1.png"),new M.c8("Responsibilities","The Structures team is involved with designing and testing structural components of the airplane. We determine structural capabilities through calculations and computer modeling.","landing1.JPG"),new M.c8("Software:","The team uses software such as ANSYS and Solidworks to perform analysis of the structural capabilities of the plane based on expected stresses and strains associated with takeoff, flight, and landing.","Struct2.png")],t.c6)},
 glu:function(){return H.d([new M.c9(3,2,!0,!0),new M.c9(2,3,!1,!1),new M.c9(2,3,!1,!0)],t.AU)}}
 M.c9.prototype={}
 M.c8.prototype={}

@@ -18,7 +18,7 @@ class StructuresContent implements TeamContent {
       Content(
         'Software:',
         'The team uses software such as ANSYS and Solidworks to perform analysis of the structural capabilities of the plane based on expected stresses and strains associated with takeoff, flight, and landing.',
-        'struct2.png',
+        'Struct2.png',
       ),
     ];
   }

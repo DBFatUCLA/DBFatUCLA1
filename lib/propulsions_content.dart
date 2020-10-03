@@ -18,7 +18,7 @@ class PropulsionsContent implements TeamContent {
       Content(
         'Flight Day Responsibilities',
         'Before flight, the propulsions and electronics team selects the appropriate propellor and tests the response of the servos that power the control surfaces (flaps, ailerons, elevator and rudder) and other mechanisms, such as our banner deployment mechanism last year.',
-        'spruceFly.jpg',
+        'spruceFly.JPG',
       ),
       Content(
         'Testing Methods',
