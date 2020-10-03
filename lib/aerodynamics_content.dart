@@ -1,12 +1,12 @@
 import 'team_content.dart';
 
-class ManufacturingContent implements TeamContent {
-  String get teamName => 'Manufacturing';
+class AerodynamicsContent implements TeamContent {
+  String get teamName => 'Aerodynamics';
 
   List<Content> get content {
     return [
       Content(
-        'Aerodynamics',
+        'Aerodynamics Subteam',
         ' ',
         'aero1.png',
       ),

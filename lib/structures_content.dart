@@ -6,7 +6,7 @@ class StructuresContent implements TeamContent {
   List<Content> get content {
     return [
       Content(
-        'Structures',
+        'Structures Subteam',
         ' ',
         'struct1.png',
       ),

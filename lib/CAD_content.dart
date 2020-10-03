@@ -6,7 +6,7 @@ class CADContent implements TeamContent {
   List<Content> get content {
     return [
       Content(
-        'Computer Aided Design',
+        'Computer Aided Design Subteam',
         ' ',
         'CAD3.jpg',
       ),

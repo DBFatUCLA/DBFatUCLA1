@@ -6,12 +6,12 @@ class PropulsionsContent implements TeamContent {
   List<Content> get content {
     return [
       Content(
-        'Propulsions and Electronics',
+        'Propulsions and Electronics Subteam',
         ' ',
         'PropElect1.jpg',
       ),
       Content(
-        'Development Responsibilities:',
+        'Development Responsibilities',
         'The Propulsion & Electronics team is responsible for selecting and testing the electric propulsion system components for the aircraft. We also set up any other electronics for the aircraft, such as servo actuators and the receiver/transmitter.',
         'propelect.png',
       ),
@@ -21,7 +21,7 @@ class PropulsionsContent implements TeamContent {
         'spruceFly.jpg',
       ),
       Content(
-        'Testing Methods:',
+        'Testing Methods',
         'We rely on a mixture of theoretical and practical methods to test the propulsion systems, including static thrust testing in the lab. The propulsion and electronics subteam relies on software such as MATLAB and eCalc to aid with the design and implementation of the propulsion and electornics systems.\n',
       )
     ];

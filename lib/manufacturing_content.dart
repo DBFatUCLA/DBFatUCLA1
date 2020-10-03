@@ -6,12 +6,12 @@ class ManufacturingContent implements TeamContent {
   List<Content> get content {
     return [
       Content(
-        'Manufacturing',
+        'Manufacturing Subteam',
         ' ',
         'manufacture2.jpg',
       ),
       Content(
-        'Manufacturing.',
+        'Responsibilities',
         'The Manufacturing team is responsible for building the entire aircraft from the ground up. We do parts fabrication and assembly based on designs from the CAD team using carbon fiber, 3D printed plastics, wood, and a variety of other materials.',
         'oldComp.jpg',
       ),

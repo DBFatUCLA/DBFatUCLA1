@@ -10,6 +10,11 @@ import 'dbf_all_teams_page.dart';
 import 'team_content_overlay.dart';
 import 'propulsions_content.dart';
 import 'manufacturing_content.dart';
+import 'CAD_content.dart';
+import 'aerodynamics_content.dart';
+import 'structures_content.dart';
+
+
 
 void main() => runApp(DBFWebsite());
 
@@ -53,6 +58,9 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent> {
       (() => DbfAllTeamsPage((idx) => _changePage(idx + 3))),
       (() => TeamContentOverlay(PropulsionsContent(), () => _changePage(2))),
       (() => TeamContentOverlay(ManufacturingContent(), () => _changePage(2))),
+      (() => TeamContentOverlay(CADContent(), () => _changePage(2))),
+      (() => TeamContentOverlay(AerodynamicsContent(), () => _changePage(2))),
+      (() => TeamContentOverlay(StructuresContent(), () => _changePage(2))),
     ];
   }
 
