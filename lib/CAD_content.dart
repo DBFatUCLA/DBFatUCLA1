@@ -1,29 +1,29 @@
 import 'team_content.dart';
 
-class ManufacturingContent implements TeamContent {
-  String get teamName => 'Manufacturing';
+class CADContent implements TeamContent {
+  String get teamName => 'CAD';
 
   List<Content> get content {
     return [
       Content(
-        'Manufacturing',
-        'This is the format which I have code to duplicate.',
-        'img1.jpg',
+        'Computer Aided Design',
+        ' ',
+        'CAD3.jpg',
       ),
       Content(
-        'Reversed so Image is on left.',
-        '''Here is a really loooooooooooong line that has lots of content. So much content. You wouldn't believe the amount of content...\n\n\n\n\n\n\n\n\n\n\n\n\n\nsurprise''',
+        'Development Responsibilities:',
+        'The Computer-Aided Design (CAD) team generates three-dimensional drawings using computer software that helps us design and manufacture our plane! In many cases, these computer drawings are directly used to 3D-print or laser-cut aircraft parts.',
+        'CAD2.png',
+      ),
+      Content(
+        'Design Applications',
+        'Before flight, the propulsions and electronics team selects the appropriate propellor and tests the response of the servos that power the control surfaces (flaps, ailerons, elevator and rudder) and other mechanisms, such as our banner deployment mechanism last year.',
         'img2.jpg',
       ),
       Content(
-        'Mobile?',
-        'Just change the browser size!',
-        'img3.jpg',
-      ),
-      Content(
-        'This one has no image',
-        'Just the title and description.\n\n\n\n\n',
-      ),
+        'Software',
+        'The CAD team uses SOLIDWORKS to model the plane and plane components. By using other software, these designs can be used for 3D printing and laser cutting as well as perform aerodynmaic analysis.\n',
+      )
     ];
   }
 

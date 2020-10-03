@@ -8,21 +8,21 @@ class PropulsionsContent implements TeamContent {
       Content(
         'Propulsions and Electronics',
         ' ',
-        'img1.jpg',
+        'PropElect1.jpg',
       ),
       Content(
         'Development Responsibilities:',
         'The Propulsion & Electronics team is responsible for selecting and testing the electric propulsion system components for the aircraft. We also set up any other electronics for the aircraft, such as servo actuators and the receiver/transmitter.',
-        'img2.jpg',
+        'propelect.png',
       ),
       Content(
         'Flight Day Responsibilities',
         'Before flight, the propulsions and electronics team selects the appropriate propellor and tests the response of the servos that power the control surfaces (flaps, ailerons, elevator and rudder) and other mechanisms, such as our banner deployment mechanism last year.',
-        'img3.jpg',
+        'spruceFly.jpg',
       ),
       Content(
         'Testing Methods:',
-        'We rely on a mixture of theoretical and practical methods to test the propulsion systems, including static thrust testing in the lab.\n\n\n\n\n',
+        'We rely on a mixture of theoretical and practical methods to test the propulsion systems, including static thrust testing in the lab. The propulsion and electronics subteam relies on software such as MATLAB and eCalc to aid with the design and implementation of the propulsion and electornics systems.\n',
       )
     ];
   }

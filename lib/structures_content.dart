@@ -1,28 +1,24 @@
 import 'team_content.dart';
 
-class ManufacturingContent implements TeamContent {
-  String get teamName => 'Manufacturing';
+class StructuresContent implements TeamContent {
+  String get teamName => 'Structures';
 
   List<Content> get content {
     return [
       Content(
-        'Manufacturing',
-        'This is the format which I have code to duplicate.',
-        'img1.jpg',
+        'Structures',
+        ' ',
+        'struct1.png',
       ),
       Content(
-        'Reversed so Image is on left.',
-        '''Here is a really loooooooooooong line that has lots of content. So much content. You wouldn't believe the amount of content...\n\n\n\n\n\n\n\n\n\n\n\n\n\nsurprise''',
-        'img2.jpg',
+        'Responsibilities',
+        'The Structures team is involved with designing and testing structural components of the airplane. We determine structural capabilities through calculations and computer modeling.',
+        'landing1.JPG',
       ),
       Content(
-        'Mobile?',
-        'Just change the browser size!',
-        'img3.jpg',
-      ),
-      Content(
-        'This one has no image',
-        'Just the title and description.\n\n\n\n\n',
+        'Software:',
+        'The team uses software such as ANSYS and Solidworks to perform analysis of the structural capabilities of the plane based on expected stresses and strains associated with takeoff, flight, and landing.',
+        'struct2.png',
       ),
     ];
   }
@@ -32,7 +28,6 @@ class ManufacturingContent implements TeamContent {
       Format(3, 2, true, true),
       Format(2, 3, false, false),
       Format(2, 3, false, true),
-      Format(1, 1, true, false),
     ];
   }
 }
