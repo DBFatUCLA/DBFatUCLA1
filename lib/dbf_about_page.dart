@@ -100,7 +100,7 @@ class DbfAboutPage extends StatelessWidget {
         children: <Widget>[
           _composeText('About Us', aboutInfo),
           _composeText('Upcoming Events',
-              'Come to our kickoff meeting on October 7th at 6pm!'),
+              'Contact us at DBF.UCLA@gmail.com to learn more about upcoming events and to join our Slack. Follow us on Instagram and Facebook for the latest news and updates!'),
           _composeText('Get Involved!', getInvolvedInfo, [
             HyperLink('Interest Form', 'https://forms.gle/uuLZALgquZ5SLvZW9'),
             HyperLink('AIAA', 'http://aiaa.seas.ucla.edu'),
