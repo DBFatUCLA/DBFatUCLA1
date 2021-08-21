@@ -68,7 +68,7 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     for (var img in rotatingImages) precacheImage(img, context);
-    precacheImage(AssetImage('$path/teamsbackground.jpg'), context);
+    precacheImage(AssetImaflutter ge('$path/teamsbackground.jpg'), context);
   }
 
   void _changePage(int idx) {
