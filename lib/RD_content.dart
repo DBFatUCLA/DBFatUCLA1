@@ -12,7 +12,7 @@ class RDContent implements TeamContent {
       ),
       Content(
         'Responsibilities',
-        'The R&D team determines works to develop new designs, analysis tools, and manufacturing techniques.'
+        'The R&D team determines works to develop new designs, analysis tools, and manufacturing techniques.',
         'bannerWindTun.jpg',
       ),
       Content(

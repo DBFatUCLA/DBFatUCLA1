@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'dbf_app_bar.dart';
 import 'dbf_homepage.dart';
 import 'dbf_about_page.dart';
+import 'dbf_2021.dart';
 import 'dbf_all_teams_page.dart';
 import 'team_content_overlay.dart';
 import 'propulsions_content.dart';
@@ -13,7 +14,7 @@ import 'manufacturing_content.dart';
 import 'CAD_content.dart';
 import 'aerodynamics_content.dart';
 import 'structures_content.dart';
-
+import 'RD_content.dart';
 
 
 void main() => runApp(DBFWebsite());
@@ -35,9 +36,8 @@ class DBFWebsite extends StatelessWidget {
 }
 
 class DBFWebsiteContent extends StatefulWidget {
-  static const List<String> page_names = ['DBF @ UCLA', 'About', 'Teams'];
-  static const List<String> page_names_drawer = ['Home', 'About', 'Teams'];
-
+  static const List<String> page_names = ['DBF @ UCLA', 'About',  '2021','Teams'];
+  static const List<String> page_names_drawer = ['DBF @ UCLA', 'About',  '2021','Teams'];
   @override
   State<StatefulWidget> createState() => _DBFWebsiteContent();
 }
@@ -55,6 +55,7 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent> {
     _pages = [
       (() => DbfHomepage()),
       (() => DbfAboutPage()),
+      (() => Dbf2021()),
       (() => DbfAllTeamsPage((idx) => _changePage(idx + 3))),
       (() => TeamContentOverlay(PropulsionsContent(), () => _changePage(2))),
       (() => TeamContentOverlay(ManufacturingContent(), () => _changePage(2))),
@@ -62,6 +63,7 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent> {
       (() => TeamContentOverlay(AerodynamicsContent(), () => _changePage(2))),
       (() => TeamContentOverlay(StructuresContent(), () => _changePage(2))),
       (() => TeamContentOverlay(RDContent(), () => _changePage(2))),
+
     ];
   }
 
