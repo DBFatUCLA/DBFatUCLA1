@@ -61,6 +61,7 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent> {
       (() => TeamContentOverlay(CADContent(), () => _changePage(2))),
       (() => TeamContentOverlay(AerodynamicsContent(), () => _changePage(2))),
       (() => TeamContentOverlay(StructuresContent(), () => _changePage(2))),
+      (() => TeamContentOverlay(RDContent(), () => _changePage(2))),
     ];
   }
 
@@ -68,7 +69,7 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     for (var img in rotatingImages) precacheImage(img, context);
-    precacheImage(AssetImaflutter ge('$path/teamsbackground.jpg'), context);
+    precacheImage(AssetImage('$path/teamsbackground.jpg'), context);
   }
 
   void _changePage(int idx) {

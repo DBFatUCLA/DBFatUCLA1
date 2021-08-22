@@ -1,6 +1,6 @@
 import 'team_content.dart';
 
-class AerodynamicsContent implements TeamContent {
+class RDContent implements TeamContent {
   String get teamName => 'R&D';
 
   List<Content> get content {
