@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'dbf_app_bar.dart';
 import 'dbf_homepage.dart';
 import 'dbf_about_page.dart';
+import 'dbf_2021.dart';
 import 'dbf_all_teams_page.dart';
 import 'team_content_overlay.dart';
 import 'propulsions_content.dart';
@@ -55,6 +56,7 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent> {
     _pages = [
       (() => DbfHomepage()),
       (() => DbfAboutPage()),
+      (() => Dbf2021()),
       (() => DbfAllTeamsPage((idx) => _changePage(idx + 3))),
       (() => TeamContentOverlay(PropulsionsContent(), () => _changePage(2))),
       (() => TeamContentOverlay(ManufacturingContent(), () => _changePage(2))),
