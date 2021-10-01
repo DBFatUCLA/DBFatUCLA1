@@ -12,7 +12,7 @@ class DbfAllTeamsPage extends StatelessWidget {
     'Manufacturing',
     'CAD',
     'Aerodynamics',
-    'Structures'
+    'Structures',
   ];
   static final List<Color> _colors = [
     Colors.deepPurpleAccent,

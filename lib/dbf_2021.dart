@@ -110,10 +110,17 @@ const String PatchworkInfo =
     """Our 2020-21 plane was given the name Patchwork due to the piece-by-piece manner in which the plane was built. The team only built one plane, as manufacturing was limited due to Covid-19 restrictions.""";
 
 const String compInfo =
+
     """The 2021 DBF compettion was held virtually, with each school submitting videos of their plane.
 
     Mission 1: Proof of Concept--Complete 3 laps in under 5 minutes.
 
     Mission 2: Sensor as Paylod--Complete 3 laps in under 5 minutes in fully loaded configuration.
+    """The 2021 DBF compettion was held virtually, with each school submitting videos of their plane. 
+
+    Mission 1: Proof of Concept--Complete 3 laps in under 5 minutes. 
+
+    Mission 2: Sensor as Paylod--Complete 3 laps in under 5 minutes while fully loaded.
+
 
     Mission 3: Sensor Deployment--Deploy and tow sensor while completing as many laps as possible in 10 minutes. """;
