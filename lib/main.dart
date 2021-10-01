@@ -36,9 +36,8 @@ class DBFWebsite extends StatelessWidget {
 }
 
 class DBFWebsiteContent extends StatefulWidget {
-  static const List<String> page_names = ['DBF @ UCLA', 'About', 'Teams'];
-  static const List<String> page_names_drawer = ['Home', 'About', 'Teams'];
-
+  static const List<String> page_names = ['DBF @ UCLA', 'About',  '2021','Teams'];
+  static const List<String> page_names_drawer = ['DBF @ UCLA', 'About',  '2021','Teams'];
   @override
   State<StatefulWidget> createState() => _DBFWebsiteContent();
 }
@@ -63,6 +62,8 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent> {
       (() => TeamContentOverlay(CADContent(), () => _changePage(2))),
       (() => TeamContentOverlay(AerodynamicsContent(), () => _changePage(2))),
       (() => TeamContentOverlay(StructuresContent(), () => _changePage(2))),
+      
+
     ];
   }
 
