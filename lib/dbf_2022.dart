@@ -13,9 +13,9 @@ class HyperLink {
   HyperLink(this.text, this.link);
 }
 
-/// 2021 page that consists of ButtonWithDropdowns.
+/// 2022 page that consists of ButtonWithDropdowns.
 ///
-class Dbf2021 extends StatelessWidget {
+class Dbf2022 extends StatelessWidget {
   static const titleStyle = TextStyle(
     color: Colors.black,
     fontFamily: SafeText.serif,
@@ -98,8 +98,8 @@ class Dbf2021 extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.fromLTRB(0, 15.0, 0, 15.0),
         children: <Widget>[
-          _composeText('2020-21 Plane: Patchwork', PatchworkInfo),
-          _composeText('Competition 2021', compInfo),
+          _composeText('2021-22 Plane', PatchworkInfo),
+          _composeText('AIAA DBF Competition 2022', compInfo),
         ],
       ),
     );
@@ -107,14 +107,16 @@ class Dbf2021 extends StatelessWidget {
 }
 
 const String PatchworkInfo =
-    """Our 2020-21 plane was given the name Patchwork due to the piece-by-piece manner in which the plane was built. The team only built one plane, as manufacturing was limited due to Covid-19 restrictions.""";
+    """Our 2021-2022 plane is currently in the initial design phase.
+
+    Join to learn more about our plans for designing and testing the plane and mechanisms. """;
 
 const String compInfo =
 
-    """The 2021 DBF competion was held virtually, with each school submitting videos of their plane. 
+    """The 2022 Design Build Fly competition is set to be held in Wichita, Kansas from April 21-24. 
 
-    Mission 1: Proof of Concept--Complete 3 laps in under 5 minutes. 
+    Mission 1: Deployment Flight--Complete 3 laps in under 5 minutes. 
 
-    Mission 2: Sensor as Payload--Complete 3 laps in under 5 minutes while fully loaded.
+    Mission 2: Staging Flight--Complete 3 laps in under 5 minutes while carrying vaccine syringes.
 
-    Mission 3: Sensor Deployment--Deploy and tow sensor while completing as many laps as possible in 10 minutes. """;
+    Mission 3: Vaccine Delivery Flight--Carry and deploy 1 or more vaccine vial packages, dropping one on the runway after each lap without triggering any of the three 5g sensors attatched to the vaccine vial package.""";

@@ -7,6 +7,7 @@ import 'dbf_app_bar.dart';
 import 'dbf_homepage.dart';
 import 'dbf_about_page.dart';
 import 'dbf_2021.dart';
+import 'dbf_2022.dart';
 import 'dbf_all_teams_page.dart';
 import 'team_content_overlay.dart';
 import 'propulsions_content.dart';
@@ -36,8 +37,8 @@ class DBFWebsite extends StatelessWidget {
 }
 
 class DBFWebsiteContent extends StatefulWidget {
-  static const List<String> page_names = ['DBF @ UCLA', 'About',  '2021','Teams'];
-  static const List<String> page_names_drawer = ['DBF @ UCLA', 'About',  '2021','Teams'];
+  static const List<String> page_names = ['DBF @ UCLA', 'About', '2021', '2022','Teams'];
+  static const List<String> page_names_drawer = ['DBF @ UCLA', 'About',  '2021', '2022','Teams'];
   @override
   State<StatefulWidget> createState() => _DBFWebsiteContent();
 }
@@ -56,13 +57,14 @@ class _DBFWebsiteContent extends State<DBFWebsiteContent> {
       (() => DbfHomepage()),
       (() => DbfAboutPage()),
       (() => Dbf2021()),
-      (() => DbfAllTeamsPage((idx) => _changePage(idx + 4))),
-      (() => TeamContentOverlay(PropulsionsContent(), () => _changePage(3))),
-      (() => TeamContentOverlay(ManufacturingContent(), () => _changePage(3))),
-      (() => TeamContentOverlay(CADContent(), () => _changePage(3))),
-      (() => TeamContentOverlay(AerodynamicsContent(), () => _changePage(3))),
-      (() => TeamContentOverlay(StructuresContent(), () => _changePage(3))),
-      (() => TeamContentOverlay(RDContent(), () => _changePage(3))),
+      (() => Dbf2022()),
+      (() => DbfAllTeamsPage((idx) => _changePage(idx + 5))),
+      (() => TeamContentOverlay(PropulsionsContent(), () => _changePage(4))),
+      (() => TeamContentOverlay(ManufacturingContent(), () => _changePage(4))),
+      (() => TeamContentOverlay(CADContent(), () => _changePage(4))),
+      (() => TeamContentOverlay(AerodynamicsContent(), () => _changePage(4))),
+      (() => TeamContentOverlay(StructuresContent(), () => _changePage(4))),
+      (() => TeamContentOverlay(RDContent(), () => _changePage(4))),
 
     ];
   }

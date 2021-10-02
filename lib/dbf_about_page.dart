@@ -102,7 +102,7 @@ class DbfAboutPage extends StatelessWidget {
           _composeText('Upcoming Events',
               'Contact us at DBF.UCLA@gmail.com to learn more about upcoming events and to join our Slack. Follow us on Instagram and Facebook for the latest news and updates!'),
           _composeText('Get Involved!', getInvolvedInfo, [
-            HyperLink('Interest Form', 'https://forms.gle/uuLZALgquZ5SLvZW9'),
+            HyperLink('Interest Form', 'https://docs.google.com/forms/d/e/1FAIpQLSfICkYwiw-6E5iEkE2YpquAHuO1w5UpXdxFkl1pM-vewiChQg/viewform?usp=sf_link'),
             HyperLink('AIAA', 'http://aiaa.seas.ucla.edu'),
           ]),
         ],
@@ -114,9 +114,11 @@ class DbfAboutPage extends StatelessWidget {
 const String aboutInfo =
     """Design Build Fly (DBF) at UCLA is an engineering club dedicated to researching, designing, manufacturing, and flying remote-controlled airplanes. Each year, club members bring together their collective knowledge and abilities to construct a plane to fit specifications outlined by the American Institute of Aeronautics and Astronautics (AIAA) for the Design Build Fly competition each spring. In addition to promoting real-world application of engineering knowledge, DBF at UCLA hosts career planning, social, and academic development events throughout the year in an effort to help students navigate the college experience and prepare for the world beyond.
 
-Through the annual design process and other projects, DBF members learn new skills and apply them towards real-world problem-solving. Students can pursue their interests in a variety fields, including aerodynamics, electronics, computer-aided design, and manufacturing. Each competition brings new missions and new design parameters, introducing new engineering challenges to consider throughout the design process. In addition to preparation for the annual trip to Tucson or Wichita, DBF at UCLA provides academic guidance, social events, and opportunities to participate in outreach.""";
+Through the annual design process and other projects, DBF members learn new skills and apply them towards real-world problem-solving. Students can pursue their interests in a variety fields, including aerodynamics, electronics, computer-aided design, and manufacturing. Each competition brings new missions and new design parameters, introducing new engineering challenges to consider throughout the design process. In addition to preparation for the annual trip to Tucson or Wichita, DBF at UCLA provides academic guidance, social events, and opportunities to participate in outreach. 
+
+Contact us at dbf.ucla@gmail.com with questions. """;
 
 const String getInvolvedInfo =
-    """Meanwhile, fill out our interest form to receive updates!
+    """Fill out our interest form to learn how to get involved!
     
 Design Build Fly exists under UCLA's American Institute of Aeronautics and Astronautics (AIAA) branch. If you would like to get involved with our parent organization or find out about other clubs under AIAA, a link to their website can be found below.""";
