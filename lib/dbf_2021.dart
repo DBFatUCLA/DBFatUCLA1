@@ -115,13 +115,6 @@ const String compInfo =
 
     Mission 1: Proof of Concept--Complete 3 laps in under 5 minutes. 
 
-    Mission 2: Sensor as Paylod--Complete 3 laps in under 5 minutes while fully loaded."""
-
-    """The 2021 DBF compettion was held virtually, with each school submitting videos of their plane.
-
-    Mission 1: Proof of Concept--Complete 3 laps in under 5 minutes.
-
-    Mission 2: Sensor as Paylod--Complete 3 laps in under 5 minutes in fully loaded configuration.
-
+    Mission 2: Sensor as Payload--Complete 3 laps in under 5 minutes while fully loaded.
 
     Mission 3: Sensor Deployment--Deploy and tow sensor while completing as many laps as possible in 10 minutes. """;
